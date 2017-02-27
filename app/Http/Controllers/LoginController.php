@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Events;
-class AdcalenController extends Controller
+
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class AdcalenController extends Controller
      */
     public function index()
     {
-         $events = Events::all();
-         return view('admincalen',['events'=>$events]);
+        //
     }
 
     /**

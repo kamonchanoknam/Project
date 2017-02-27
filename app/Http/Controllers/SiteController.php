@@ -14,7 +14,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $name = Temple::all();
+        $name = Temple::orderBy('Temp_name','ASC')->paginate(3);
+      
        
         return view('index',['temple'=>$name]);
     }

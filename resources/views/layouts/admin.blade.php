@@ -1,113 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <title>SB Admin - Bootstrap Admin Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="{{ ('css/plugins/morris.css') }}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="{{ ('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
-    @yield('head')
-
-    <style>
-    img
-        {
-            width: 100px;
-            height: 90px;
-        }
-    
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 5px;
-        text-align: left;    
-    }
-    </style>
-</head>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin for Temple</title>
+    <!-- Core CSS - Include with every page -->
+    <link href="{{ asset('admin/plugins/bootstrap/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/plugins/pace/pace-theme-big-counter.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/css/main-style.css') }}" rel="stylesheet" />
+    <!-- Page-Level CSS -->
+    <link href="{{ asset('admin/plugins/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
+   </head>
+   @yield('head')
 <body>
-
+    <!--  wrapper -->
     <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- navbar top -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+            <!-- navbar-header -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/adindex') }}">Welcome Admin</a>
+              
+                <h2 style="font-weight: bold; color: #000080">&nbsp;Welcome Admin</h2>
+                    <!--<img src="assets/img/logo.png" alt="" />-->
+               
             </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                
+            <!-- end navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- main dropdown -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> jenjira <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="top-label label label-danger" ></span><i class="fa fa-pencil-square-o fa-3x"></i>
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="top-label label label-success"></span>  <i class="fa fa-calendar fa-3x"></i>
+                    </a>
+                </li>
+
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-3x"></i>
+                    </a>
+                    <!-- dropdown user-->
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
                         </li>
-                        
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                        </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                         </li>
                     </ul>
+                    <!-- end dropdown-user -->
                 </li>
+                <!-- end main dropdown -->
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="{{ url('/adindex') }}"><i class="glyphicon glyphicon-list-alt"></i> ข้อมูลวัด</a>
-                    </li>
+            <!-- end navbar-top-links -->
+
+        </nav>
+        <!-- end navbar top -->
+
+        <!-- navbar side -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <!-- sidebar-collapse -->
+            <div class="sidebar-collapse">
+                <!-- side-menu -->
+                <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{ url('/adcalen') }}"><i class="glyphicon glyphicon-calendar"></i> ข้อมูลปฎิทินกิจกรรม</a>
+                        <!-- user image section-->
+                        <div class="user-section">
+                            <div class="user-section-inner">
+                                <img src="{{ asset('admin/img/adicon.png') }}" alt="">
+                            </div>
+                            <div class="user-info">
+                                <div>Nam<strong> Kamon</strong></div>
+                                <div class="user-text-online">
+                                    <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
+                                </div>
+                            </div>
+                        </div>
+                        <!--end user image section-->
+                    </li>
+                    
+                    <?php if(Request::is('adindex')){ ?> 
+                    <li class='selected'> 
+                    <?php }else{ ?> 
+                    <li> 
+                    <?php } ?>
+                        <a href="{{ url('/adindex') }}"><i class="fa fa-pencil-square-o fa-fw"></i>ข้อมูลวัด</a>
                     </li>
                    
+                     <?php if(Request::is('adcalen')){ ?> 
+                        <li class='selected'> 
+                        <?php }else{ ?> 
+                        <li> 
+                        <?php } ?>
+                        <a href="{{ url('/adcalen') }}"><i class="fa fa-calendar fa-fw"></i>ปฏิทินกิจกรรม</a>
+                    </li>
                 </ul>
+                <!-- end side-menu -->
             </div>
-            <!-- /.navbar-collapse -->
+            <!-- end sidebar-collapse -->
         </nav>
         @yield('content')
-    
-        <!-- /#page-wrapper -->
+        
 
     </div>
-    <!-- /#wrapper -->
+    <!-- end wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery2.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('js/plugins/morris/raphael.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/morris/morris.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/morris/morris-data.js') }}"></script>
-    @yield('footer')
+    <!-- Core Scripts - Include with every page -->
+    <script src="{{ asset('admin/plugins/jquery-1.10.2.js') }}"></script>
+    <script src="{{ asset('admin/plugins/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('admin/plugins/pace/pace.js') }}"></script>
+    <script src="{{ asset('admin/scripts/siminta.js') }}"></script>
+    <!-- Page-Level Plugin Scripts-->
+    <script src="{{ asset('admin/plugins/morris/raphael-2.1.0.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/morris/morris.js') }}"></script>
+    <script src="{{ asset('admin/scripts/dashboard-demo.js') }}"></script>
+@yield('footer')
 </body>
 
 </html>

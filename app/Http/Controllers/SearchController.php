@@ -50,7 +50,8 @@ class SearchController extends Controller
      */
     public function show($id)
     {
-        //
+        echo $id;
+        die();
     }
 
     /**

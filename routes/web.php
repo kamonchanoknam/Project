@@ -18,7 +18,6 @@ Route::get('calendar','CalendarController@calendar');
 
 //Route::get('search','SearchController@search');
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,13 +36,14 @@ Route::get('/adindex', function () {
 Route::get('/suggest', function () {
     return view('suggest');
 });
+
 Route::resource('/adcalen','AdcalenController');
 
 
 Route::resource('/calendar','CalendarController');
 
 Route::resource('/search', 'SearchController');
-
+Route::resource('/search/{id}', 'SearchController@show');
 
 Auth::routes();
 

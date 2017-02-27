@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <link href={{ url('css/fullcalendar.css') }} rel='stylesheet' />
+    <link href="{{ url('css/fullcalendar.css') }}" rel='stylesheet' />
     <style>
    
 	#calendar {
@@ -24,8 +24,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><br>
 @endsection
+
 
 @section('footer')
 

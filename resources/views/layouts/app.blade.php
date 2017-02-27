@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
     <meta charset="UTF-8">
     <script src="{{ asset('js/jQuery1.js') }}"></script>
-    <script src="{{asset('js/myScript.js') }}"></script>
+    <script src="{{ asset('js/myScript.js') }}"></script>
     @yield('head')
 <style>
 .button {
