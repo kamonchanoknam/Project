@@ -12,6 +12,19 @@
     <link href="{{ asset('admin/css/main-style.css') }}" rel="stylesheet" />
     <!-- Page-Level CSS -->
     <link href="{{ asset('admin/plugins/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
+     <script src="{{ asset('admin/plugins/jquery-1.10.2.js') }}"></script>
+    <script src="{{ asset('admin/plugins/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('admin/plugins/pace/pace.js') }}"></script>
+    <script src="{{ asset('admin/scripts/siminta.js') }}"></script>
+    <!-- Page-Level Plugin Scripts-->
+    <script src="{{ asset('admin/plugins/morris/raphael-2.1.0.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/morris/morris.js') }}"></script>
+    <script src="{{ asset('admin/scripts/dashboard-demo.js') }}"></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
    </head>
    @yield('head')
 <body>
@@ -121,15 +134,7 @@
     <!-- end wrapper -->
 
     <!-- Core Scripts - Include with every page -->
-    <script src="{{ asset('admin/plugins/jquery-1.10.2.js') }}"></script>
-    <script src="{{ asset('admin/plugins/bootstrap/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-    <script src="{{ asset('admin/plugins/pace/pace.js') }}"></script>
-    <script src="{{ asset('admin/scripts/siminta.js') }}"></script>
-    <!-- Page-Level Plugin Scripts-->
-    <script src="{{ asset('admin/plugins/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/morris/morris.js') }}"></script>
-    <script src="{{ asset('admin/scripts/dashboard-demo.js') }}"></script>
+   
 @yield('footer')
 </body>
 

@@ -43,7 +43,7 @@ Route::resource('/adcalen','AdcalenController');
 Route::resource('/calendar','CalendarController');
 
 Route::resource('/search', 'SearchController');
-Route::resource('/search/{id}', 'SearchController@show');
+// Route::resource('/search', 'SearchController@show');
 
 Auth::routes();
 
