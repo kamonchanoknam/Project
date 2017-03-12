@@ -35,22 +35,85 @@
 		 .textbox:hover {
 		    width: 270px;
 		}
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 75%;
+		}
+
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
 		</style>
 @endsection
 
 @section('content')
 	<h1 align="center">ค้นหาวัด</h1>
 			<hr width="50%"><br>
-			<form align="center">
-			  <input class="textbox" type="text" list="myCompanies" name="company" id="suggest" >
+			
+
+			{!! Form::open(['url' => 'search']) !!}
+			<div align="center">
+   			  <input class="textbox" type="text" list="myCompanies" name="templeName" id="suggest" >
 			  <datalist id="myCompanies" >
+
 			  @foreach($temple as $temple)
 			  	<option value="{{ $temple->Temp_name}}">
 			  @endforeach
 			  </datalist>
 			  <button class="button" type="submit">ตกลง</button>
 			  <button class="button" type="reset">ยกเลิก</button>
-			</form><br><br>
+			  </div>
+			{!! Form::close() !!} 
+			<br>
+
+
+			
+			@if(!empty($temple1))
+			
+				<table align="center">
+			  <tr>
+			    <th>ชื่อวัด</th>
+			    <td>{{$temple1[0]->Temp_name}}</td>
+			  </tr>
+			  <tr>
+			    <th>ที่อยู่วัด</th>
+			    <td>{{$temple1[0]->Temp_address}}</td>
+			    
+			  </tr>
+			  <tr>
+			    <th>ลักษณะเด่น</th>
+			    <td>{{$temple1[0]->Temp_features}}</td>
+			  </tr>
+			  <tr>
+			     <th>ประวัติ</th>
+			    <td>{{$temple1[0]->Temp_history}}</td>
+			  </tr>
+			  <tr>
+			    <th>ละติจูด</th>
+			    <td>{{$temple1[0]->Temp_latitude}}</td>
+			  </tr>
+			  <tr>
+			    <th>ลองติจูด</th>
+			    <td>{{$temple1[0]->Temp_longitude}}</td>
+			  </tr>
+			</table><br>
+			<img src="{{ asset('images/pictemple/'.$temple1[0]->Pic_name)}}">
+			@endif<br>
+
+
+
+
+
+			
+
+
 @endsection
 
 @section('footer')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events;
+use DB;
 
 class CalendarController extends Controller
 {
@@ -15,7 +16,12 @@ class CalendarController extends Controller
     public function index()
     {  
          $events = Events::all();
-         return view('calendar',['events'=>$events]);
+
+         $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
+        
+        /*dd($events1);*/
+
+        return view('calendar',['events'=>$events1]);
     }
 
     /**

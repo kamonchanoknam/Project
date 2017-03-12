@@ -21,10 +21,13 @@
     <script src="{{ asset('admin/plugins/morris/raphael-2.1.0.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/morris/morris.js') }}"></script>
     <script src="{{ asset('admin/scripts/dashboard-demo.js') }}"></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
-<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+    
+    
+  
+    <!--<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+    <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>-->
    </head>
    @yield('head')
 <body>
@@ -68,12 +71,12 @@
                     </a>
                     <!-- dropdown user-->
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                        <li><a href="{{ url('/userpro')}}"><i class="fa fa-user fa-fw"></i>ข้อมูลส่วนตัว</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                        </li>
+                        <!--<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                        </li>-->
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        <li><a href="{{ url('index') }}"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
                     <!-- end dropdown-user -->

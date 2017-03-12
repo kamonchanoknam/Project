@@ -15,6 +15,7 @@
 @endsection
 
 @section('content')
+	
     <h1 align="center">ปฏิทินกิจกรรมงานบุญ</h1>
     <hr width="50%"><br>
     <div class="container" >
@@ -82,25 +83,25 @@
 			events: [
 			<?php foreach($events as $event): 
 			
-				$start = explode(" ", $event['Event_start']);
-				$end = explode(" ", $event['Event_end']);
+				$start = explode(" ", $event->Event_start);
+				$end = explode(" ", $event->Event_end);
 				if($start[1] == '00:00:00'){
 					$start = $start[0];
 				}else{
-					$start = $event['Event_start'];
+					$start = $event->Event_start;
 				}
 				if($end[1] == '00:00:00'){
 					$end = $end[0];
 				}else{
-					$end = $event['Event_end'];
+					$end = $event->Event_end;
 				}
 			?>
 				{
 					
-					title: '<?php echo $event['Act_id']; echo " ".$event['Event_place'];?>',
-					start: '<?php echo $start; ?>',
-					end: '<?php echo $end; ?>',
-					color: '<?php echo $event['Color']; ?>',
+					title: '{{$event->Act_name}} : {{$event->Temp_name}}',
+					start: '{{$start}}',
+					end: '{{$end}}',
+					color: '{{$event->Color}}',
 					
 				},
 			<?php endforeach; ?>

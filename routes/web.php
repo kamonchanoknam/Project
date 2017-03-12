@@ -43,9 +43,18 @@ Route::resource('/adcalen','AdcalenController');
 Route::resource('/calendar','CalendarController');
 
 Route::resource('/search', 'SearchController');
-// Route::resource('/search', 'SearchController@show');
+
+Route::post('/search', 'SearchController@search');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/userpro', function () {
+    return view('userprofile');
+});
+
+Route::get('/showwat', function () {
+    return view('show');
+});
