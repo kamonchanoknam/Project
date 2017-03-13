@@ -55,6 +55,7 @@ Route::get('/userpro', function () {
     return view('userprofile');
 });
 
-Route::get('/showwat', function () {
-    return view('show');
-});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

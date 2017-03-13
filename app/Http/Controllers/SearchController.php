@@ -91,7 +91,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
 
-        $temple1 = Temple::where('Temp_name', $request->templeName)->get();
+        
         // var_dump($temple);
         $name = Temple::all();
         

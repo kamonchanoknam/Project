@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
               
-                <h2 style="font-weight: bold; color: #000080">&nbsp;Welcome Admin</h2>
+                <h2 style="font-weight: bold; color: red">&nbsp;Welcome Admin</h2>
                     <!--<img src="assets/img/logo.png" alt="" />-->
                
             </div>
@@ -52,17 +52,17 @@
             <!-- navbar-top-links -->
             <ul class="nav navbar-top-links navbar-right">
                 <!-- main dropdown -->
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="top-label label label-danger" ></span><i class="fa fa-pencil-square-o fa-3x"></i>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="top-label label label-success"></span>  <i class="fa fa-calendar fa-3x"></i>
                     </a>
-                </li>
+                </li> --}}
 
 
                 <li class="dropdown">

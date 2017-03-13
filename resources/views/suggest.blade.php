@@ -78,7 +78,7 @@
 @section('content')
 	<h1 align="center" >แนะนำเส้นทางและวางแผนการเดินทาง</h1>
 	<hr width="50%"><br>
-	<div id="floating-panel">
+	{{-- <div id="floating-panel">
 
       <strong>จุดเริ่มต้น:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" name="start" id="start">
@@ -99,7 +99,7 @@
       
       <strong>วัดปลายทาง:</strong>
       <input type="text" name="start" id="start">
-      <!--<select id="end">
+      <select id="end">
         <option value="chicago, il">Chicago</option>
         <option value="st louis, mo">St Louis</option>
         <option value="joplin, mo">Joplin, MO</option>
@@ -112,7 +112,7 @@
         <option value="barstow, ca">Barstow</option>
         <option value="san bernardino, ca">San Bernardino</option>
         <option value="los angeles, ca">Los Angeles</option>
-      </select>-->
+      </select>
       <br>
       <strong>จำนวนวัด:</strong>&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" name="numtemp" id="num">
@@ -126,7 +126,7 @@
       <input type="reset" name="cancle" value="ยกเลิก">
     </div>
     <div id="right-panel"></div>
-    <div id="map"></div><br>
+    <div id="map"></div><br> --}}
 @endsection
 
 @section('footer')

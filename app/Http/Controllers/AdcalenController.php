@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events;
+use DB;
 class AdcalenController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class AdcalenController extends Controller
     public function index()
     {
          $events = Events::all();
-         return view('admincalen',['events'=>$events]);
+         $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
+         return view('admincalen',['events'=>$events1]);
     }
 
     /**

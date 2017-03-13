@@ -27,9 +27,7 @@
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
-
 .button:hover {background-color: #3e8e41}
-
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
@@ -48,12 +46,10 @@
  .textbox:hover {
     width: 270px;
 }
-
 /*nav login*/
 .navbar-default{
   background-color: black;
   border-color: #e7e7e7;
-
 }
 .navbar{
   position: relative;
@@ -129,7 +125,6 @@
 .input-group-addon, .input-group-btn, .input-group .form-control {
     display: table-cell;
 }
-
 .form-control {
     display: block;
     width: 50%;
@@ -154,34 +149,26 @@ p{
 button{
   background-color: red;
   color: white;
-
 }
 </style>
-
 </head>
 <body>
-
     {{-- nav  login --}}
     <nav class="navbar navbar-default" style="    height: 40px;">
       <form id="signin" class="navbar-form navbar-rigth" role="form">
-        <div class="input-group" style="float: right;">
-
+        <div class="input-group" style={{-- "float: right;" --}}"margin-left: 50%">
           {{-- <input type="email" name="email" id="email" class="form-control" value placeholder="Email Address"> --}}
-
       <div class="input-group-addon" ">
         <i class="fa fa-user"></i>  
        </div>
-
-       <input id="email" name="email" type="text" class="form-control input-md" placeholder="Email Address">
-
+       <input id="username" name="username" type="text" class="form-control input-md" placeholder="Username">
        <div class="input-group-addon">
         <i class="fa fa-lock"></i> 
        </div>
-
-       <input id="Date Of Birth" name="Date Of Birth" type="text" class="form-control input-md" placeholder="Password"> 
-
+       <input id="password" name="password" type="text" class="form-control input-md" placeholder="Password"> 
       </div>
-             
+      <input type="submit" name="ok" value="ตกลง" style="float: right; margin-top: -2%">
+    
       </form>
       
     </nav>
@@ -205,15 +192,12 @@ button{
                 <li  {{ Request::is('search') ? ' class=selected ' : null }}>
                     <a href="{{ url('/search') }}">ค้นหาวัด</a>
                 </li>
-
             </ul>
         </div>
     </div>
     
     
      @yield('content')
-
-
     <!--footer-->
     <div id="footer">
         <span class="divider"></span>

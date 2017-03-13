@@ -168,7 +168,7 @@ p a:hover {
 }
 
 /** adbox **/
-#adbox {
+/*#adbox {
 	background: url(../images/adbox.jpg) no-repeat center top;
 	margin: -45px 0 30px;
 }
@@ -209,7 +209,7 @@ p a:hover {
 #adbox ul li > div p a {
 	color: #2f2203;
 	text-decoration: none;
-}
+}*/
 /** section **/
 .section {
 	float: left;

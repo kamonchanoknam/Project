@@ -32,10 +32,17 @@
                 <div id="calendar" class="col-centered" style="background-color: #BEBEBE">
                 </div>
             </div>
-        </div>
+        </div><br><br>
 
-        <!-- Modal add -->
-    <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        {{-- <input type="submit" name="add" value="เพิ่มกิจกรรม"> --}}
+        
+        <button >เพิ่มกิจกรรม</button>
+        <button >แก้ไขกิจกรรม</button>
+        
+
+
+        <!-- Modal add Event-->
+    {{-- <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
       <form class="form-horizontal" method="POST" action="addEvent.php">
@@ -89,11 +96,11 @@
       </form>
       </div>
       </div>
-    </div>
+    </div> --}}
 
 
     <!-- Modal Edit Event-->
-    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    {{-- <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
       <form class="form-horizontal" method="POST" action="editEventTitle.php">
@@ -104,13 +111,13 @@
         <div class="modal-body">
         
           <div class="form-group">
-          <label for="title" class="col-sm-2 control-label">Title</label>
+          <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
             <input type="text" name="title" class="form-control" id="title" placeholder="Title">
           </div>
           </div>
           <div class="form-group">
-          <label for="color" class="col-sm-2 control-label">Color</label>
+          <label for="color" class="col-sm-2 control-label">สี</label>
           <div class="col-sm-10">
             <select name="color" class="form-control" id="color">
               <option value="">Choose</option>
@@ -144,7 +151,7 @@
       </form>
       </div>
       </div>
-    </div>
+    </div> --}}
         
   </div>
 
@@ -156,8 +163,8 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
- {{--  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-   --}}
+  {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
+  
   <!-- FullCalendar -->
   <script src="{{ asset('js/moment.min.js')}}"></script>
   <script src="{{ asset('js/fullcalendar.min.js')}}"></script>
@@ -205,25 +212,25 @@
       events: [
       <?php foreach($events as $event): 
       
-        $start = explode(" ", $event['Event_start']);
-        $end = explode(" ", $event['Event_end']);
+        $start = explode(" ", $event->Event_start);
+        $end = explode(" ", $event->Event_end);
         if($start[1] == '00:00:00'){
           $start = $start[0];
         }else{
-          $start = $event['Event_start'];
+          $start = $event->Event_start;
         }
         if($end[1] == '00:00:00'){
           $end = $end[0];
         }else{
-          $end = $event['Event_end'];
+          $end = $event->Event_end;
         }
       ?>
         {
           
-          title: '<?php echo $event['Act_id']; echo " ".$event['Temp_id'];?>',
-          start: '<?php echo $start; ?>',
-          end: '<?php echo $end; ?>',
-          color: '<?php echo $event['Color']; ?>',
+          title: '{{$event->Act_name}} : {{$event->Temp_name}}',
+          start: '{{$start}}',
+          end: '{{$end}}',
+          color: '{{$event->Color}}',
           
         },
       <?php endforeach; ?>

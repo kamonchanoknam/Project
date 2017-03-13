@@ -50,6 +50,14 @@
 		tr:nth-child(even) {
 		    background-color: #dddddd;
 		}
+		img{
+			padding: 20px;
+			width: 220px;
+			height: 220px;
+			
+    		
+
+		}
 		</style>
 @endsection
 
@@ -104,7 +112,10 @@
 			    <td>{{$temple1[0]->Temp_longitude}}</td>
 			  </tr>
 			</table><br>
-			<img src="{{ asset('images/pictemple/'.$temple1[0]->Pic_name)}}">
+
+			@foreach ($temple1 as $temple)
+			<img src="{{ asset('images/pictemple/'.$temple->Pic_name)}}">
+			@endforeach
 			@endif<br>
 
 
