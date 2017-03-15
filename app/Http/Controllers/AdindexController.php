@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class AdindexController extends Controller
 {
@@ -13,7 +14,7 @@ class AdindexController extends Controller
      */
     public function index()
     {
-        
+        return view('adminindex');
     }
 
     /**
@@ -80,5 +81,25 @@ class AdindexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function login(Request $req)
+    {
+
+        $username = $req->input('username');
+        $password = $req->input('password');
+
+        $checkLogin = DB::table('staff')->where(['Username'=>$username,'Password'=>$password,'Type'=>'1'])->get();
+        if(count($checkLogin) >0)
+        {
+            session_start();
+            $_SESSION['Username'] = $username;
+            
+           return redirect()->action('AdindexController@index');
+        }
+        else
+        {
+            echo "Login Failed";
+        }
     }
 }

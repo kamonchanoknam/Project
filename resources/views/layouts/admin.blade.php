@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
               
-                <h2 style="font-weight: bold; color: red">&nbsp;Welcome Admin</h2>
+                <h2 style="font-weight: bold; color: white">&nbsp;Welcome Admin</h2>
                     <!--<img src="assets/img/logo.png" alt="" />-->
                
             </div>
@@ -101,7 +101,7 @@
                                 <img src="{{ asset('admin/img/adicon.png') }}" alt="">
                             </div>
                             <div class="user-info">
-                                <div>Nam<strong> Kamon</strong></div>
+                                <div><strong> <?php echo $_SESSION['Username']; ?></strong></div>
                                 <div class="user-text-online">
                                     <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
                                 </div>

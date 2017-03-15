@@ -1,10 +1,23 @@
+<?php
+session_start();
+if (!isset($_SESSION['count'])) {
+  $_SESSION['count'] = 0;
+} else {
+  $_SESSION['count']++;
+}
+
+// $name = $row['Name'];
+?>
 @extends('layouts.admin')
 
 @section('head')
 <link href="{{ asset('css/fullcalendar.css') }}" rel='stylesheet' />
 
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+  {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 
-    <style>
+  <style>
    
   #calendar {
     max-width: 800px;
@@ -36,9 +49,91 @@
 
         {{-- <input type="submit" name="add" value="เพิ่มกิจกรรม"> --}}
         
-        <button >เพิ่มกิจกรรม</button>
-        <button >แก้ไขกิจกรรม</button>
+       {{--  <button >เพิ่มกิจกรรม</button>
+        <button >แก้ไขกิจกรรม</button> --}}
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
+
+         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+               {{--  <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">เพิ่มกิจกรรม</h4>
+                </div> --}}
+                {{-- <div class="modal-body">
+                  
+                  วันเลาที่เริ่มกิจกรรม :<input type="text" name="start">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> --}}
+                <form class="form-horizontal" method="POST" action="addEvent.php">
+                    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรม</h4>
+        </div>
+        <div class="modal-body">
         
+          <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
+          <div class="col-sm-10">
+            <input type="select" name="title" class="form-control" id="title" placeholder="Title">
+            {{-- <select name="name">
+              
+            </select> --}}
+          </div>
+          </div>
+          <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
+          <div class="col-sm-10">
+            <input type="select" name="place" class="form-control" id="place" placeholder="Title">
+          </div>
+          </div>
+          <div class="form-group">
+          <label for="color" class="col-sm-2 control-label">สีเน้นกิจกรรม</label>
+          <div class="col-sm-10">
+            <select name="color" class="form-control" id="color">
+              <option value="">Choose</option>
+              <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+              <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+              <option style="color:#008000;" value="#008000">&#9724; Green</option>             
+              <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+              <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+              <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+              <option style="color:#000;" value="#000">&#9724; Black</option>
+              
+            </select>
+          </div>
+          </div>
+          <div class="form-group">
+
+          <label for="start" class="col-sm-2 control-label">วันที่เริ่มกิจกรรม</label>
+          <div class="col-sm-10">
+            <input type="datetime-local" name="start" class="form-control" id="start" >
+          </div>
+          </div>
+          <div class="form-group">
+          <label for="end" class="col-sm-2 control-label">วันที่สิ้นสุดกิจกรรม</label>
+          <div class="col-sm-10">
+            <input type="datetime-local" name="end" class="form-control" id="end" >
+          </div>
+          </div>
+        
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
 
 
         <!-- Modal add Event-->

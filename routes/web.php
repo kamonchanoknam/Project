@@ -27,10 +27,8 @@ Route::resource('/index','SiteController');
 //Route::resource('/adindex','AdindexController');
 
 
-Route::get('/adindex', function () {
-    return view('adminindex');
-});
 
+Route::resource('/adindex','AdindexController');
 
 
 Route::get('/suggest', function () {
@@ -47,7 +45,7 @@ Route::resource('/search', 'SearchController');
 Route::post('/search', 'SearchController@search');
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index');
 
@@ -55,6 +53,15 @@ Route::get('/userpro', function () {
     return view('userprofile');
 });
 
+
+
+Route::get('/home', 'HomeController@index');
+
+
+
+Route::get('/home', 'HomeController@index');
+
+Route::post('/adindex', 'AdindexController@login');
 
 Auth::routes();
 

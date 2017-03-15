@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('head')
     <link href="{{ url('css/fullcalendar.css') }}" rel='stylesheet' />
