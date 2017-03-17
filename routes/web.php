@@ -44,16 +44,12 @@ Route::resource('/search', 'SearchController');
 
 Route::post('/search', 'SearchController@search');
 
-
+Route::resource('/userpro', 'UserprofileController');
 
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/userpro', function () {
-    return view('userprofile');
-});
-
-
+Route::resource('/userpro', 'UserprofileController');
 
 Route::get('/home', 'HomeController@index');
 

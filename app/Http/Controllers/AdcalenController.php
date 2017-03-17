@@ -16,7 +16,11 @@ class AdcalenController extends Controller
     {
          $events = Events::all();
          $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
-         return view('admincalen',['events'=>$events1]);
+
+         $temple1 = DB::table('temple')->select('*')->get();
+         $act1 = DB::table('activity')->select('*')->get();
+
+         return view('admincalen',['events'=>$events1,'temple'=>$temple1,'activity'=>$act1]);
     }
 
     /**

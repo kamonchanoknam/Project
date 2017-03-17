@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['count'])) {
   $_SESSION['count'] = 0;
 } else {
@@ -43,14 +43,14 @@ if (!isset($_SESSION['count'])) {
 
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Name (Full name)">หมายเลขบัตรประชาชน</label>  
+  <label class="col-md-4 control-label" for="id">หมายเลขบัตรประชาชน</label>  
   <div class="col-md-4">
  <div class="input-group">
        <div class="input-group-addon">
         <i class="fa fa-id-card">
         </i>
        </div>
-       <label id="Name (Full name)" name="Name" type="text"  class="form-control input-md"></label>
+          <input id="id" name="id" type="text" class="form-control input-md" value="{{ $user[0]->Staff_id}}" readonly>
 
       </div>
 
@@ -69,8 +69,9 @@ if (!isset($_SESSION['count'])) {
 </div>-->
 
 <!-- Text input-->
+
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Date Of Birth">ชื่อ</label>  
+  <label class="col-md-4 control-label" for="fname">ชื่อ</label>  
   <div class="col-md-4">
 
   <div class="input-group">
@@ -78,7 +79,8 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-user-circle"></i>
         
        </div>
-       <input id="Date Of Birth" name="Date Of Birth" type="text" class="form-control input-md">
+       <input id="fname" name="fname" type="text" class="form-control input-md" 
+       value="{{ $user[0]->Name}}" >
       </div>
   
     
@@ -87,8 +89,9 @@ if (!isset($_SESSION['count'])) {
 
 
 <!-- Text input-->
+
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Date Of Birth">นามสกุล</label>  
+  <label class="col-md-4 control-label" for="lname">นามสกุล</label>  
   <div class="col-md-4">
 
   <div class="input-group">
@@ -96,7 +99,7 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-user-circle-o"></i>
         
        </div>
-       <input id="Date Of Birth" name="Date Of Birth" type="text" class="form-control input-md">
+       <input id="lname" name="lname" type="text" class="form-control input-md" value="{{ $user[0]->Surname}}" >
       </div>
   
     
@@ -105,14 +108,14 @@ if (!isset($_SESSION['count'])) {
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Mother">ที่อยู่</label>  
+  <label class="col-md-4 control-label" for="Address">ที่อยู่</label>  
   <div class="col-md-6">
   <div class="input-group">
        <div class="input-group-addon">
       <i class="fa fa-home" style="font-size: 20px;"></i>
         
        </div>
-  <input id="Mother" name="Mother" type="text"  class="form-control input-md">
+  <input id="Address" name="Address" type="text"  class="form-control input-md" value="{{ $user[0]->Address}}">
 
       </div>
     
@@ -129,7 +132,7 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-phone"></i>
         
        </div>
-    <input id="Phone number " name="Phone number " type="text"  class="form-control input-md">
+    <input id="Phone number " name="Phone number " type="text"  class="form-control input-md" value="{{ $user[0]->Phone}}">
     
       </div>  
   
@@ -145,7 +148,7 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-envelope-o"></i>
         
        </div>
-    <input id="Email Address" name="Email Address" type="text"  class="form-control input-md">
+    <input id="Email Address" name="Email Address" type="text"  class="form-control input-md" value="{{ $user[0]->Email}}">
     
       </div>
   
@@ -161,7 +164,8 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-clock-o"></i>
         
        </div>
-    <label id="Availability time" name="Availability time" type="text"  class="form-control input-md"></label>
+    {{-- <label id="Availability time" name="Availability time" type="text"  class="form-control input-md"></label> --}}
+    <input id="status" name="status" type="text"  class="form-control input-md" value="{{ $user[0]->Status}}" readonly>
     
       </div>
   
@@ -178,7 +182,8 @@ if (!isset($_SESSION['count'])) {
      <i class="fa fa-street-view"></i>
         
        </div>
-   <label id="Available Service Area" name="Available Service Area" type="text"  class="form-control input-md"></label>
+   {{-- <label id="Available Service Area" name="Available Service Area" type="text"  class="form-control input-md"></label> --}}
+   <input id="type" name="type" type="text"  class="form-control input-md" value="{{ $user[0]->Type}}" readonly>
     
       </div>
   

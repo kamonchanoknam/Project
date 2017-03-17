@@ -53,7 +53,7 @@ if (!isset($_SESSION['count'])) {
         <button >แก้ไขกิจกรรม</button> --}}
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
 
-         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button>
+         {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button> --}}
 
           <!-- Modal -->
           <div class="modal fade" id="myModal" role="dialog">
@@ -72,7 +72,7 @@ if (!isset($_SESSION['count'])) {
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div> --}}
-                <form class="form-horizontal" method="POST" action="addEvent.php">
+        <form class="form-horizontal" method="POST" action="addEvent.php">
                     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรม</h4>
@@ -82,16 +82,25 @@ if (!isset($_SESSION['count'])) {
           <div class="form-group">
           <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="select" name="title" class="form-control" id="title" placeholder="Title">
-            {{-- <select name="name">
-              
-            </select> --}}
+            
+           {{--  <input type="select" name="title" class="form-control" id="title" placeholder="Title"> --}}
+            <select name="name" >
+                @foreach($activity as $act)
+                <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
+                @endforeach
+            </select>
+           
           </div>
           </div>
           <div class="form-group">
           <label for="title" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="select" name="place" class="form-control" id="place" placeholder="Title">
+            {{-- <input type="select" name="place" class="form-control" id="place" placeholder="Title"> --}}
+            <select name="place" >
+                @foreach($temple as $temp)
+                <option value="{{$temp->Temp_id}}">{{$temp->Temp_name}}</option>
+                @endforeach
+            </select>
           </div>
           </div>
           <div class="form-group">
@@ -195,7 +204,7 @@ if (!isset($_SESSION['count'])) {
 
 
     <!-- Modal Edit Event-->
-    {{-- <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
       <form class="form-horizontal" method="POST" action="editEventTitle.php">
@@ -208,7 +217,12 @@ if (!isset($_SESSION['count'])) {
           <div class="form-group">
           <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+            {{-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> --}}
+            <select name="name" >
+                @foreach($activity as $act)
+                <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
+                @endforeach
+            </select>
           </div>
           </div>
           <div class="form-group">
@@ -246,7 +260,7 @@ if (!isset($_SESSION['count'])) {
       </form>
       </div>
       </div>
-    </div> --}}
+    </div>
         
   </div>
 
@@ -258,7 +272,7 @@ if (!isset($_SESSION['count'])) {
   <script src="{{ asset('js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-  {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   
   <!-- FullCalendar -->
   <script src="{{ asset('js/moment.min.js')}}"></script>
@@ -274,7 +288,7 @@ if (!isset($_SESSION['count'])) {
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
-      defaultDate: '2016-01-12',
+      defaultDate: '2017-03-01',
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       selectable: true,

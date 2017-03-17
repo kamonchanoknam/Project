@@ -16,18 +16,18 @@
     @yield('head')
 <style>
 .button {
-  padding: 5px 15px;
-  font-size: 18px;
+  padding: 3px 13px;
+  font-size: 14px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #66CDAA;
+  background-color: #556B2F;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  border-radius: 10px;
+  box-shadow: 0 4px #999;
 }
-.button:hover {background-color: #3e8e41}
+.button:hover {background-color: #8FBC8F}
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
@@ -168,8 +168,8 @@ button{
        </div>
        <input id="password" name="password" type="password" class="form-control input-md" placeholder="Password"> 
       </div>
-      <input type="submit" name="ok" value="ตกลง" style="float: right; margin-top: -2%">
-    
+      <input class="button" type="submit" name="ok" value="ตกลง" style="float: right; margin-top: -2%">
+      
       </form>
 
 
@@ -181,7 +181,7 @@ button{
         <div class="area">
             <div id="logo">
                 <!--<a href="index.html"><img src="" alt="LOGO" height="86" width="170" /></a>-->
-                <h1 style="color: #996600">Temple in Chiang Mai City</h1>
+                <h1 style="color: #996600">วัดในอำเภอเมืองเชียงใหม่</h1>
             </div>
             <ul id="navigation">
                 <li  {{ Request::is('index') ? ' class=selected ' : null }}>
@@ -206,9 +206,9 @@ button{
     <div id="footer">
         <span class="divider"></span>
         <div class="area">
-            <div id="connect">
+           {{--  <div id="connect">
                 <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a> <a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="mail"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a>
-            </div>
+            </div> --}}
             <!--<p>
                 © 2023 AZ Logistics. All Rights Reserved.
             </p>-->

@@ -13,7 +13,7 @@ class SuggestController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

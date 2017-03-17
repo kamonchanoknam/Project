@@ -32,9 +32,10 @@
 					</li>
 				@endforeach
 				</ul>
-
-				<div class="pagination">
-					{{ $temple->links() }}
+				<div align="center">
+					<div class="pagination">
+						{{ $temple->links() }}
+					</div>
 				</div>
 			</div>
 	</div>

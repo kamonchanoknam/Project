@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['count'])) {
   $_SESSION['count'] = 0;
 } else {
@@ -41,27 +41,27 @@ if (!isset($_SESSION['count'])) {
                       <tbody>
                         <tr>
                           <th>ชื่อวัด</th>
-                          <td>แสดงขื่อวัด</td>
+                          <td>{{ $templeuser[0]->Temp_name}}</td>
                         </tr>
                         <tr>
                           <th>ที่อยู่วัด</th>
-                          <td>แสดงที่อยู่วัด</td>
+                          <td>{{ $templeuser[0]->Temp_address}}</td>
                         </tr>
                         <tr>
                           <th>ลักษณเด่น</th>
-                          <td>แสดงลักษณเด่น</td>
+                          <td>{{ $templeuser[0]->Temp_features}}</td>
                         </tr>
                         <tr>
                           <th>ประวัติ</th>
-                          <td>แสดงประวัติ</td>
+                          <td>{{ $templeuser[0]->Temp_history}}</td>
                         </tr>
                         <tr>
                           <th>ละติจูด</th>
-                          <td>แสดงละติจูด</td>
+                          <td>{{ $templeuser[0]->Temp_latitude}}</td>
                         </tr>
                         <tr>
                           <th>ลองติจูด</th>
-                          <td>แสดงลองติจูด</td>
+                          <td>{{ $templeuser[0]->Temp_longitude}}</td>
                         </tr>
                       </tbody>
                     </table>

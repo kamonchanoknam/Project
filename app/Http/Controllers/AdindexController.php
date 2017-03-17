@@ -13,8 +13,11 @@ class AdindexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('adminindex');
+    {   
+        session_start();
+        $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+        // dd($temple);
+        return view('adminindex',['templeuser'=>$temple]);
     }
 
     /**
@@ -94,6 +97,7 @@ class AdindexController extends Controller
         {
             session_start();
             $_SESSION['Username'] = $username;
+            
             
            return redirect()->action('AdindexController@index');
         }

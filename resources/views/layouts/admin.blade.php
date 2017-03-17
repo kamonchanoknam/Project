@@ -101,7 +101,7 @@
                                 <img src="{{ asset('admin/img/adicon.png') }}" alt="">
                             </div>
                             <div class="user-info">
-                                <div><strong> <?php echo $_SESSION['Username']; ?></strong></div>
+                                <div><strong><?php echo $_SESSION['Username']; ?></strong></div>
                                 <div class="user-text-online">
                                     <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
                                 </div>
