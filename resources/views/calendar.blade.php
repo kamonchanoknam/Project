@@ -50,7 +50,7 @@
 				center: 'title',
 				right: 'month,basicWeek,basicDay'
 			},
-			defaultDate: '2016-01-12',
+			defaultDate: '2017-03-12',
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin System</title>
+    <title>Admin Temple</title>
     <!-- Core CSS - Include with every page -->
     <link href="{{ asset('admin/plugins/bootstrap/bootstrap.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
@@ -20,6 +20,7 @@
     <script src="{{ asset('admin/plugins/morris/raphael-2.1.0.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/morris/morris.js') }}"></script>
     <script src="{{ asset('admin/scripts/dashboard-demo.js') }}"></script>
+    
     
     
   
@@ -44,7 +45,7 @@
                     <span class="icon-bar"></span>
                 </button>
               
-                <h2 style="font-weight: bold; color: white">&nbsp;&nbsp;ยินดีต้อนรับผู้ดูแลระบบ</h2>
+                <h2 style="font-weight: bold; color: white">&nbsp;&nbsp;ยินดีต้อนรับผู้ดูแลวัด</h2>
                     <!--<img src="assets/img/logo.png" alt="" />-->
                
             </div>
@@ -71,7 +72,7 @@
                     </a>
                     <!-- dropdown user-->
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{ url('/adminpro') }}"><i class="fa fa-user fa-fw"></i>ข้อมูลส่วนตัว</a>
+                        <li><a href="{{ url('/adtemppro')}}"><i class="fa fa-user fa-fw"></i>ข้อมูลส่วนตัว</a>
                         </li>
                         <!--<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
                         </li>-->
@@ -101,7 +102,7 @@
                                 <img src="{{ asset('admin/img/adicon.png') }}" alt="">
                             </div>
                             <div class="user-info">
-                                <div><strong>kamon</strong></div>
+                                <div><strong><?php echo $_SESSION['Username']; ?></strong></div>
                                 <div class="user-text-online">
                                     <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
                                 </div>
@@ -110,27 +111,26 @@
                         <!--end user image section-->
                     </li>
                     
-                    <?php if(Request::is('addtemple')){ ?> 
+                    <?php if(Request::is('adindexshow')){ ?> 
                     <li class='selected'> 
                     <?php }else{ ?> 
                     <li> 
                     <?php } ?>
-                        <a href="{{ url('/addtemple') }}"><i class="fa fa-pencil-square-o fa-fw">&nbsp;</i>เพิ่มวัด</a>
+                        <a href="{{ url('/adindexshow') }}"><i class="fa fa-pencil-square-o fa-fw"></i>ข้อมูลวัด</a>
                     </li>
                    
-                     <?php if(Request::is('addstaff')){ ?> 
+                     <?php if(Request::is('adcalen')){ ?> 
                         <li class='selected'> 
                         <?php }else{ ?> 
                         <li> 
                         <?php } ?>
-                        <a href="{{ url('/addstaff') }}"><i class="fa fa-user fa-fw">&nbsp;</i>เพิ่มผู้ดูแลวัด</a>
+                        <a href="{{ url('/adcalen') }}"><i class="fa fa-calendar fa-fw"></i>ปฏิทินกิจกรรม</a>
                     </li>
                 </ul>
                 <!-- end side-menu -->
             </div>
             <!-- end sidebar-collapse -->
         </nav>
-
         @yield('content')
         
 

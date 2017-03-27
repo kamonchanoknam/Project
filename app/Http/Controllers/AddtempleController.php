@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Temple;
-use App\Pictures;
+use App\Staff;
 use DB;
-class SiteController extends Controller
+
+
+class AddtempleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +17,11 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $name = Temple::orderBy('Temp_name','ASC')->paginate(3);
-        $pic = DB::table('temple')->select('*')->join('picture','picture.Temp_id','=','temple.Temp_id')->get();
+        $temple = Temple::all();
+         $staff = Staff::all();
+        return view('addtemple',['addtemple'=>$temple,'staff'=>$staff]);
+
       
-       // dd($pic);
-        return view('index',['temple'=>$name , 'pictemp'=>$pic]);
     }
 
     /**
@@ -29,7 +31,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -40,7 +42,17 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $temple = new Temple();
+        $temple->Temp_name = $request->tempname;
+        $temple->Temp_address = $request->address;
+        $temple->Temp_features  = $request->features;
+        $temple->Temp_history  = $request->history;
+        $temple->Temp_latitude  = $request->latitude;
+        $temple->Temp_longitude  = $request->longitude;
+        $temple->Staff_id  = $request->id;
+        
+        $temple->save();
     }
 
     /**
@@ -62,8 +74,7 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        
-
+        //
     }
 
     /**

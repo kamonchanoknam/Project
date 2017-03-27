@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-
-class UserprofileController extends Controller
+class AdminprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +13,12 @@ class UserprofileController extends Controller
      */
     public function index()
     {
-
         session_start();
 
 
         $profile = DB::table('staff')->select('*')->where('Username','like', $_SESSION['Username'])->get();
         /*dd($profile);*/
-        return view('userprofile',['user'=>$profile]);
+        return view('adminprofile',['user'=>$profile]);
     }
 
     /**

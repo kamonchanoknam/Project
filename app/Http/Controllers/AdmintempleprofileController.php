@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Temple;
-use App\Pictures;
 use DB;
-class SiteController extends Controller
+
+class AdmintempleprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,13 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $name = Temple::orderBy('Temp_name','ASC')->paginate(3);
-        $pic = DB::table('temple')->select('*')->join('picture','picture.Temp_id','=','temple.Temp_id')->get();
-      
-       // dd($pic);
-        return view('index',['temple'=>$name , 'pictemp'=>$pic]);
+
+        session_start();
+
+
+        $profile = DB::table('staff')->select('*')->where('Username','like', $_SESSION['Username'])->get();
+        /*dd($profile);*/
+        return view('admintempleprofile',['user'=>$profile]);
     }
 
     /**
@@ -62,8 +63,7 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        
-
+        //
     }
 
     /**

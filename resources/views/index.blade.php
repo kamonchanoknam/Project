@@ -19,11 +19,11 @@
 	<div id="blog" class="area">
 			<div class="main">
 				<ul class="list" style="background: #CCFFFF"> 
-				@foreach($temple as $row)
+				@foreach($pictemp as $row)
 					<li>
-						<img src="images/boss.png" alt="Img" height="130" width="130" />
+						<img src="{{ ('images/pictemple/'.$row->Pic_name) }}" alt="Img" height="130" width="130" />
 						<div>
-
+							
 							<h3></a>{{$row->Temp_name}}</h3>
 							<p style="color:black;">{{$row->Temp_features}}</p>
 							 
@@ -32,7 +32,7 @@
 					</li>
 				@endforeach
 				</ul>
-				<div align="center">
+				<div>
 					<div class="pagination">
 						{{ $temple->links() }}
 					</div>

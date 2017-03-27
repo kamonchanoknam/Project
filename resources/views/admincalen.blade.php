@@ -8,7 +8,7 @@ if (!isset($_SESSION['count'])) {
 
 // $name = $row['Name'];
 ?>
-@extends('layouts.admin')
+@extends('layouts.admintemp')
 
 @section('head')
 <link href="{{ asset('css/fullcalendar.css') }}" rel='stylesheet' />
@@ -51,7 +51,8 @@ if (!isset($_SESSION['count'])) {
         
        {{--  <button >เพิ่มกิจกรรม</button>
         <button >แก้ไขกิจกรรม</button> --}}
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
+         <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#neweventModal">เพิ่มกิจกรรมใหม่</button>
 
          {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button> --}}
 
@@ -72,19 +73,20 @@ if (!isset($_SESSION['count'])) {
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div> --}}
-        <form class="form-horizontal" method="POST" action="addEvent.php">
-                    <div class="modal-header">
+        {{-- <form class="form-horizontal" method="POST" action="addEvent.php"> --}}
+        {!! Form::open(['url'=>'adcalen','class'=>'form-horizontal']) !!}
+        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรม</h4>
         </div>
         <div class="modal-body">
         
           <div class="form-group">
-          <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
+          <label for="nameevent" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
             
            {{--  <input type="select" name="title" class="form-control" id="title" placeholder="Title"> --}}
-            <select name="name" >
+            <select name="nameevent" class="form-control">
                 @foreach($activity as $act)
                 <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
                 @endforeach
@@ -93,10 +95,10 @@ if (!isset($_SESSION['count'])) {
           </div>
           </div>
           <div class="form-group">
-          <label for="title" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
+          <label for="placeevent" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
           <div class="col-sm-10">
             {{-- <input type="select" name="place" class="form-control" id="place" placeholder="Title"> --}}
-            <select name="place" >
+            <select name="placeevent" class="form-control">
                 @foreach($temple as $temp)
                 <option value="{{$temp->Temp_id}}">{{$temp->Temp_name}}</option>
                 @endforeach
@@ -138,79 +140,84 @@ if (!isset($_SESSION['count'])) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
-                </form>
-              </div>
+       
+        {{!! Form::close() !!}}
+      </div>
               
             </div>
           </div>
+      </div>
 
-
-        <!-- Modal add Event-->
-    {{-- <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      <form class="form-horizontal" method="POST" action="addEvent.php">
-      
+      {{-- Modal Add new event --}}
+      <div class="modal fade" id="neweventModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+               {{--  <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">เพิ่มกิจกรรม</h4>
+                </div> --}}
+                {{-- <div class="modal-body">
+                  
+                  วันเลาที่เริ่มกิจกรรม :<input type="text" name="start">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> --}}
+        {{-- <form class="form-horizontal" method="POST" action="addEvent.php"> --}}
+        {!! Form::open(['url'=>'adcalen','class'=>'form-horizontal']) !!}
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Event</h4>
+        <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรมใหม่</h4>
         </div>
         <div class="modal-body">
         
           <div class="form-group">
-          <label for="title" class="col-sm-2 control-label">Title</label>
+          <label for="nameevent" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+            
+            <input type="text" name="actname" class="form-control" placeholder="ชื่อกิจกรรม">
+            {{-- <select name="nameevent" class="form-control">
+                @foreach($activity as $act)
+                <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
+                @endforeach
+            </select> --}}
+           
           </div>
           </div>
           <div class="form-group">
-          <label for="color" class="col-sm-2 control-label">Color</label>
+          <label for="placeevent" class="col-sm-2 control-label">รายละเอียดยกิจกรรม</label>
           <div class="col-sm-10">
-            <select name="color" class="form-control" id="color">
-              <option value="">Choose</option>
-              <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
-              <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
-              <option style="color:#008000;" value="#008000">&#9724; Green</option>             
-              <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
-              <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
-              <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
-              <option style="color:#000;" value="#000">&#9724; Black</option>
-              
-            </select>
+            <textarea name="detail" class="form-control" placeholder="รายละเอียดยกิจกรรม"></textarea>
+            
           </div>
           </div>
-          <div class="form-group">
-          <label for="start" class="col-sm-2 control-label">Start date</label>
-          <div class="col-sm-10">
-            <input type="text" name="start" class="form-control" id="start" readonly>
-          </div>
-          </div>
-          <div class="form-group">
-          <label for="end" class="col-sm-2 control-label">End date</label>
-          <div class="col-sm-10">
-            <input type="text" name="end" class="form-control" id="end" readonly>
-          </div>
-          </div>
+        
         
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
-      </form>
+       
+        {!! Form::close() !!}
       </div>
+              
+            </div>
+          </div>
       </div>
-    </div> --}}
 
 
     <!-- Modal Edit Event-->
     <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
-      <form class="form-horizontal" method="POST" action="editEventTitle.php">
+      
+      {!! Form::open(['url'=>'adcalen/.','class'=>'form-horizontal']) !!}
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+        <h4 class="modal-title" id="myModalLabel">แก้ไขกิจกรรม</h4>
         </div>
         <div class="modal-body">
         
@@ -218,7 +225,7 @@ if (!isset($_SESSION['count'])) {
           <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
             {{-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> --}}
-            <select name="name" >
+            <select name="nameact" class="form-control">
                 @foreach($activity as $act)
                 <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
                 @endforeach
@@ -257,27 +264,18 @@ if (!isset($_SESSION['count'])) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
-      </form>
+      {!! Form::close() !!}
       </div>
       </div>
     </div>
         
-  </div>
+  
 
 @endsection
 
 @section('footer')
   
-
-  <script src="{{ asset('js/jquery.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-  
-  <!-- FullCalendar -->
-  <script src="{{ asset('js/moment.min.js')}}"></script>
-  <script src="{{ asset('js/fullcalendar.min.js')}}"></script>
-  
+ 
   <script>
 
   $(document).ready(function() {
@@ -379,7 +377,7 @@ if (!isset($_SESSION['count'])) {
     
   });
 
-</script><br><br>
+</script>
 @endsection
 
 

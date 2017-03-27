@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Temple;
-use App\Pictures;
+use App\Staff;
 use DB;
-class SiteController extends Controller
+
+class AddstaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $name = Temple::orderBy('Temp_name','ASC')->paginate(3);
-        $pic = DB::table('temple')->select('*')->join('picture','picture.Temp_id','=','temple.Temp_id')->get();
-      
-       // dd($pic);
-        return view('index',['temple'=>$name , 'pictemp'=>$pic]);
+        $staff = Staff::all();
+
+        return view('addstaff',['addstaff'=>$staff]);
     }
 
     /**
@@ -40,7 +38,20 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $staff = new Staff();
+        $staff->Staff_id = $request->id;
+        $staff->Name = $request->name;
+        $staff->Surname = $request->surname;
+        $staff->Email = $request->email;
+        $staff->Username = $request->username;
+        $staff->Password = $request->password;
+        $staff->Phone = $request->phone;
+        $staff->Address = $request->address;
+        $staff->Status = $request->status;
+        $staff->Type = $request->type;
+
+        // dd($staff);
+        $staff->save();
     }
 
     /**
@@ -62,8 +73,7 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        
-
+        //
     }
 
     /**

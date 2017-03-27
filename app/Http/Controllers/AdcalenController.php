@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events;
+use App\Activity;
 use DB;
 class AdcalenController extends Controller
 {
@@ -41,7 +42,27 @@ class AdcalenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $events = new Events();
+        $events->Act_id = $request->nameevent;
+        $events->Temp_id = $request->placeevent;
+        $events->Event_start = $request->start;
+        $events->Event_end = $request->end;
+        $events->Color = $request->color;
+
+        // dd($events);
+        $events->save();
+
+
+       
+        // return redirect('admincalen');
+    }
+    public function addact(Request $request)
+    {
+        $activity = new Activity();
+        $activity->Act_name = $request->actname;
+        $activity->Act_detail = $request->detail;
+
+        $activity->save();
     }
 
     /**
@@ -75,7 +96,13 @@ class AdcalenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $edit = Events::find($id);
+        $edit->Act_id = $request->nameact;
+        $edit->Color = $request->color;
+
+        $edit->save();
+
     }
 
     /**

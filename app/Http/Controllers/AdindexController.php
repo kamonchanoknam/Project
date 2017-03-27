@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Temple;
 use DB;
 
 class AdindexController extends Controller
@@ -17,6 +18,7 @@ class AdindexController extends Controller
         session_start();
         $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->where('staff.Username','like', $_SESSION['Username'])->get();
         // dd($temple);
+        
         return view('adminindex',['templeuser'=>$temple]);
     }
 
@@ -60,7 +62,10 @@ class AdindexController extends Controller
      */
     public function edit($id)
     {
-        //
+        session_start();
+        $temple = Temple::where('Temp_id' , '=',$id)->get();
+        /*dd($temple);*/
+        return view('edittemple',['temple' => $temple]);
     }
 
     /**
@@ -72,7 +77,18 @@ class AdindexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $temple = Temple::findOrFail($id);
+    
+        $temple->Temp_name = $request->Temp_name;
+        $temple->Temp_address = $request->Temp_address;
+        $temple->Temp_features = $request->Temp_features;
+        $temple->Temp_history = $request->Temp_history;
+        $temple->Temp_latitude = $request->Temp_latitude;
+        $temple->Temp_longitude = $request->Temp_longitude;
+
+        $temple->save();
     }
 
     /**
@@ -92,14 +108,25 @@ class AdindexController extends Controller
         $username = $req->input('username');
         $password = $req->input('password');
 
-        $checkLogin = DB::table('staff')->where(['Username'=>$username,'Password'=>$password,'Type'=>'1'])->get();
+        $checkLogin = DB::table('staff')->where(['Username'=>$username,'Password'=>$password])->get();
+
+        // dd($checkLogin);
         if(count($checkLogin) >0)
         {
+            if($checkLogin[0]->Type==1){
             session_start();
             $_SESSION['Username'] = $username;
             
             
            return redirect()->action('AdindexController@index');
+            }
+            else{
+                session_start();
+            $_SESSION['Username'] = $username;
+            
+            
+           return redirect()->action('AddtempleController@index');
+            }
         }
         else
         {

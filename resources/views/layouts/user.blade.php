@@ -33,19 +33,7 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-.textbox {
-    background: #333;
-    color: #ccc;
-    width: 200px;
-    padding: 6px 15px 6px 35px;
-    border-radius: 20px;
-    box-shadow: 0 1px 0 #ccc inset;
-    transition: 500ms all ease;
-    outline: 0;
-}
- .textbox:hover {
-    width: 270px;
-}
+
 /*nav login*/
 .navbar-default{
   background-color: black;

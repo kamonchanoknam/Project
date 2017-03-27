@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Temple;
+use DB;
 
 class SuggestController extends Controller
 {
@@ -13,7 +15,11 @@ class SuggestController extends Controller
      */
     public function index()
     {
-        
+        $mapstemple = Temple::all();
+        // dd($mapstemple);
+
+        return view('suggest',['tempmaps'=>$mapstemple]);
+
     }
 
     /**
