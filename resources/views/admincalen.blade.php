@@ -31,7 +31,58 @@ if (!isset($_SESSION['count'])) {
 @endsection
 
 @section('content')
-    
+    <div id="page-wrapper">
+
+            <div class="row">
+                <!-- Page Header -->
+                <div class="col-lg-12">
+                    <h1 class="page-header">ข้อมูลวัด</h1>
+                    
+                    <table class="table table-inverse">
+                      
+                      <tbody>
+                        <tr>
+                          <th>ชื่อกิจกรรม</th>
+                          <th>ชื่อวัด</th>
+                          <th>วันเวลาเริ่มกิจกรรม</th>
+                          <th>วันเวลาสิ้นสุดกิจกรรม</th>
+                          <th>สี</th>
+
+                        </tr>
+                        <tr>
+                          <th>ที่อยู่วัด</th>
+                          <td></td>
+                        </tr>
+                                                               
+                  
+                          <td>
+                            {{-- <a href="{{ url('/adindexshow/'.$templeuser[0]->Temp_id.'/edit')}}"> --}}
+                            <button type="button" class="btn btn-default">
+                              <span class="fa fa-edit "></span> แก้ไขข้อมูล
+                            </button>{{-- </a> --}}
+
+                            {{-- <a href="#"><span class=" glyphicon glyphicon-edit"></span></a> --}}
+                          
+                          </td> 
+                          <td>
+                          {{-- <a href="{{ url('/adindexshow/'.$templeuser[0]->Temp_id.'/addpicture')}}"> --}}
+                            <button type="button" class="btn btn-default">
+                              <span class="fa fa-cloud-upload "></span> เพิ่มรูปภาพ
+                            </button>{{-- </a> --}}
+                            
+                            {{-- <a href="#"><span class=" glyphicon glyphicon-edit"></span></a> --}}
+                          
+                          </td> 
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <!--End Page Header -->
+
+                
+            </div>
+        </div>
+  
     <div id="page-wrapper">
 
             <div class="row">
@@ -51,8 +102,8 @@ if (!isset($_SESSION['count'])) {
         
        {{--  <button >เพิ่มกิจกรรม</button>
         <button >แก้ไขกิจกรรม</button> --}}
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
-         <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#neweventModal">เพิ่มกิจกรรมใหม่</button>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
+         <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#neweventModal">เพิ่มกิจกรรมใหม่</button>
 
          {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button> --}}
 

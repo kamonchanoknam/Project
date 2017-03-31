@@ -29,8 +29,9 @@
       #map {
         height: 50%;
         float: left;
-        width: 70%;
-        height: 80%;
+        width: 60%;
+        height: 70%;
+        margin-left: 30px;
 
       }
       #right-panel {
@@ -78,9 +79,11 @@
 
 @section('content')
 	<h1 align="center" >แนะนำเส้นทางและวางแผนการเดินทาง</h1>
+  
 	<hr width="50%"><br>
+  <div id="map"></div>
 	<div id="floating-panel">
-    <div id="map"></div>
+    
     <div id="right-panel">
     <div>
     <b>จุดเริ่มต้น:</b>
@@ -234,7 +237,7 @@
           };
           var infoWindow = new google.maps.InfoWindow;
 
-          downloadUrl("maps_xml.blade.php", function(data) {
+          downloadUrl("{{ $xml_url }}", function(data) {
 
 
             var xml = data.responseXML;

@@ -12,7 +12,8 @@
 */
 Route::get('index','SiteController@index');
 
-Route::resource('suggest','SuggestController');
+Route::get('suggest','SuggestController@index');
+Route::get('suggest/xml','SuggestController@xml_response')->name('suggest_xml');;
 
 Route::get('calendar','CalendarController@calendar');
 
@@ -22,15 +23,15 @@ Route::get('/', function () {
 
 Route::resource('/index','SiteController');
 
-Route::get('/xml', function () {
-    return view('maps_xml');
-});
+// Route::get('/xml', function () {
+//     return view('maps_xml');
+// });
 
 
 
 
 Route::resource('/adindexshow','AdindexController');
-
+Route::post('/adindex', 'AdindexController@login');
 
 
 
@@ -59,7 +60,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index');
 
-Route::post('/adindex', 'AdindexController@login');
 
 Auth::routes();
 

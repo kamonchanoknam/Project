@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Temple;
 use DB;
 
@@ -16,75 +17,31 @@ class SuggestController extends Controller
     public function index()
     {
         $mapstemple = Temple::all();
+        $xml_url = route('suggest_xml');
+        return view('suggest',['tempmaps'=>$mapstemple, 'xml_url' => $xml_url]);
+    }
+
+    public function xml_response() {
+        $mapstemple = Temple::all();
         // dd($mapstemple);
+        $doc = new \DOMDocument("1.0"); 
+        $node = $doc->createElement("temple");
+        $parnode = $doc->appendChild($node);
 
-        return view('suggest',['tempmaps'=>$mapstemple]);
+        // Iterate through the rows, adding XML nodes for each
+        foreach ($mapstemple as $temple) {
+          // Add to XML document node
+          $node = $doc->createElement("marker");
+          $newnode = $parnode->appendChild($node);
+          $newnode->setAttribute("name", $temple->Temp_name);
+          $newnode->setAttribute("address", $temple->Temp_address);
+          $newnode->setAttribute("lat", $temple->Temp_latitude);
+          $newnode->setAttribute("lng", $temple->Temp_longitude); 
+        }
 
+        $content = $doc->saveXML();
+
+        return response($content, '200')->header('Content-Type', 'text/xml');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

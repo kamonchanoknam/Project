@@ -10,6 +10,7 @@ if (!isset($_SESSION['count'])) {
 ?>
 
 @extends('layouts.admintemp')
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
 
 @section('head')
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,27 +37,33 @@ if (!isset($_SESSION['count'])) {
                 <!-- Page Header -->
                 <div class="col-lg-12">
                     <h1 class="page-header">แก้ไขข้อมูลวัด</h1>
-                     {!!   Form::model($temple[0], array('url' => 'adindexshow/'.$temple[0]->Temp_id, 'method' => 'put')); !!}
-                          {!! Form::label('tempname','ชื่อวัด'); !!}
-                          {!! Form::text('Temp_name',null); !!}<br>
+                     {!!   Form::model($temple[0], array('url' => 'adindexshow/'.$temple[0]->Temp_id, 'method' => 'put','class'=>'pure-form')); !!}
+                          {!! Form::label('tempname','ชื่อวัด :'); !!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::text('Temp_name',null,array('class' => 'pure-input-1-2')); !!}<br><br>
+                           
 
-                          {!! Form::label('tempaddress','ที่อยู่วัด'); !!}
-                          {!! Form::text('Temp_address',null);!!}<br>
+                          {!! Form::label('tempaddress','ที่อยู่วัด :'); !!}
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::text('Temp_address',null,array('class' => 'pure-input-1-2'));!!}<br><br>
 
                           {!! Form::label('tempfeature','ลักษณะเด่นวัด'); !!}
-                          {!! Form::text('Temp_features',null); !!}<br>
+
+                          {!! Form::textarea('Temp_features',null,array('class' => 'pure-input-1-2')); !!}<br><br>
 
 
                           {!! Form::label('temphistory','ประวัติวัด') !!}
-                          {!! Form::text('Temp_history',null);!!}<br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::textarea('Temp_history',null,array('class' => 'pure-input-1-2'));!!}<br><br>
 
-                          {!! Form::label('templat','ละติจู') !!}
-                          {!! Form::text('Temp_latitude',null);!!}<br>
+                          {!! Form::label('templat','ละติจูด') !!}
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::text('Temp_latitude',null,array('class' => 'pure-input-1-2'));!!}<br><br>
 
                           {!! Form::label('templong','ลองจิจูด') !!}
-                          {!! Form::text('Temp_longitude',null); !!}<br>
-
-                          {!! Form::submit('บันทึก'); !!}
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::text('Temp_longitude',null,array('class' => 'pure-input-1-2')); !!}<br><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {!! Form::submit('บันทึก',array('class' => 'btn btn-default')); !!}
 
 
                           {!! Form::close(); !!}
@@ -66,13 +73,10 @@ if (!isset($_SESSION['count'])) {
          
             </div>
         </div>
-        </div>
+        
   
               
-                
-
-
-           
+                         
 @endsection
 
 @section('footer')

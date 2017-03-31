@@ -13,7 +13,7 @@
 @section('content')
 
 
-<h1 align="center">วัดในอำเภอเมืองเชียงใหม่</h1>
+<h1 align="center">ข้อมูลวัดในอำเภอเมืองเชียงใหม่</h1>
 
 <hr width="50%"><br>
 	<div id="blog" class="area">

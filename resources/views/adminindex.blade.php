@@ -75,10 +75,10 @@ if (!isset($_SESSION['count'])) {
                           
                           </td> 
                           <td>
-                          
+                          <a href="{{ url('/adindexshow/create/')}}">
                             <button type="button" class="btn btn-default">
                               <span class="fa fa-cloud-upload "></span> เพิ่มรูปภาพ
-                            </button>
+                            </button></a>
                             
                             {{-- <a href="#"><span class=" glyphicon glyphicon-edit"></span></a> --}}
                           
@@ -102,37 +102,22 @@ if (!isset($_SESSION['count'])) {
                             <th>Email</th>
                           </tr>
                         </thead> --}}
+                        
                         <tbody>
+                        
                           <tr style="font-weight: bolder;">
-                            <td >รูปภาพ</td>
+                            <td >รหัสรูปภาพ</td>
                             <td>ชื่อรูปภาพ</td>
                             <td>แก้ไขรายละเอียด</td>
-                          </tr>      
+                          </tr> 
+                          @foreach($templeuser as $pic)     
                           <tr>
-                            <td>Success</td>
+                            <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}"></td>
                             <td>Doe</td>
                             <td>john@example.com</td>
+
                           </tr>
-                          <tr>
-                            <td>Danger</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                          </tr>
-                          <tr>
-                            <td>Info</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                          </tr>
-                          <tr>
-                            <td>Warning</td>
-                            <td>Refs</td>
-                            <td>bo@example.com</td>
-                          </tr>
-                          <tr>
-                            <td>Active</td>
-                            <td>Activeson</td>
-                            <td>act@example.com</td>
-                          </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     {{--   @endforeach --}}
