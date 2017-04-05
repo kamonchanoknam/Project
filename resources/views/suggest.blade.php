@@ -90,7 +90,7 @@
     <input class="textbox" id="start" style="width: 250px" placeholder="Enter a location" />
 
     
-    <br>
+    
 <b>จุดสิ้นสุด:</b><br>
     <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;">
             <datalist id='myCompanies'>
@@ -99,9 +99,12 @@
           <option value="{{ $temple->Temp_latitude }},{{ $temple->Temp_longitude }}" >"{{ $temple->Temp_name}}"</option>
         @endforeach
     
-    </datalist><br><br>
+    </datalist><br>
 
-    <input type="submit" id="submit" value="ดูเส้นทาง"><br><br>
+    <b>กรอบเวลา:</b><br>
+    <input type="time" name="starttime"> ถึง <input type="time" name="endtime"><br><br>
+
+    <input type="submit" id="submit" value="ดูเส้นทาง"><br>
 
     <b>เลือกวัดที่ต้องการ:</b> <br>
     <i>(Ctrl+Click สำหรับเลือกได้หลายวัด)</i> <br>
@@ -137,9 +140,11 @@
       
     </div>
     
+    
+    </div>
+    <div id="right-panel">
     <div id="directions-panel"></div>
     </div>
-
   </div><br>
 @endsection
 
@@ -406,9 +411,12 @@
             // For each route, display summary information.
             for (var i = 0; i < route.legs.length; i++) {
               var routeSegment = i + 1;
+              // var duration = parseFloat(route.legs[i].duration.text)+30;
+
+
               summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
                   '</b><br>';
-              summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+              summaryPanel.innerHTML += route.legs[i].start_address + ' <b>to<b> ';
               summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
               summaryPanel.innerHTML += route.legs[i].duration.text + '<br>';
               summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';

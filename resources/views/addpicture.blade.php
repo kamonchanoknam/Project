@@ -32,12 +32,15 @@ if (!isset($_SESSION['count'])) {
                     <h1 class="page-header">เพิ่มรูปภาพ</h1>
 
                 
-                      <form action="upload.php" method="post" >
+                      
+                      {!! Form::open(array('url'=>'adindexshow','files'=> 'true')) !!}
+                          <input type="hidden" name="id" value="{{$templeuser[0]->Temp_id}}">
       
-                          <input type="file" name="fileToUpload" id="fileToUpload">
+                          <input type="file" name="files[]" id="file_input" multiple="multiple">
                           <br>
                           <input type="submit" value="อัพโหลดรูปภาพ" name="submit">
-                      </form>
+                      {!! Form::close() !!}
+                      
 
                 </div>
             </div>

@@ -10,7 +10,7 @@
 
 	 		{!! Form::open(['url'=>'/addtemple','class'=>'pure-form','method' => 'post']) !!}
 			    <fieldset class="pure-group">
-			       <input type="text" class="pure-input-1-2" placeholder="ชื่อวัด" name="tepname">
+			       <input type="text" class="pure-input-1-2" placeholder="ชื่อวัด" name="tempname">
 			       <input type="text" class="pure-input-1-2" placeholder="ที่อยู่วัด" name="address">
 			    </fieldset>
 

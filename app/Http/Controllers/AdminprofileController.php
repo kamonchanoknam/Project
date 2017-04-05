@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Staff;
 use DB;
 class AdminprofileController extends Controller
 {
@@ -61,7 +62,10 @@ class AdminprofileController extends Controller
      */
     public function edit($id)
     {
-        //
+        session_start();
+        $staff = Staff::where('Staff_id' , '=', $id)->get();
+        /*dd($temple);*/
+        return view('adminprofile',['user' => $staff]);
     }
 
     /**
@@ -73,7 +77,20 @@ class AdminprofileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $admin = Staff::findOrFail($id);
+    
+        $admin->Staff_id = $request->Staff_id;
+        $admin->Name = $request->Name;
+        $admin->Surname = $request->Surname;
+        $admin->Username = $request->Username;
+        $admin->Password = $request->Password;
+        $admin->Address = $request->Address;
+        $admin->Phone = $request->Phone;
+        $admin->Email = $request->Email;
+        $admin->Status = $request->Status;
+        $admin->Type = $request->Type;
+
+        $admin->save();
     }
 
     /**

@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_SESSION['count'])) {
+  $_SESSION['count'] = 0;
+} else {
+  $_SESSION['count']++;
+}
+?>
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>

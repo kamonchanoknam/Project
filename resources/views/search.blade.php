@@ -114,7 +114,7 @@
 			</table><br>
 
 			@foreach ($temple1 as $temple)
-			<img src="{{ asset('images/pictemple/'.$temple->Pic_name) }}">
+			<img src="{{ asset('images/pictemple/'.$temple->Pic_name) }}" style="width: 200px; height: 150px;">
 			@endforeach
 			@endif<br>
 

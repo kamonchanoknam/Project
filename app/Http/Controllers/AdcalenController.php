@@ -15,8 +15,11 @@ class AdcalenController extends Controller
      */
     public function index()
     {
-         $events = Events::all();
+         // $events = Events::all();
          $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
+         // dd($events1);
+
+
 
          $temple1 = DB::table('temple')->select('*')->get();
          $act1 = DB::table('activity')->select('*')->get();
@@ -42,20 +45,37 @@ class AdcalenController extends Controller
      */
     public function store(Request $request)
     {
-        $events = new Events();
-        $events->Act_id = $request->nameevent;
-        $events->Temp_id = $request->placeevent;
-        $events->Event_start = $request->start;
-        $events->Event_end = $request->end;
-        $events->Color = $request->color;
+        // $events = new Events();
+        // $events->Act_id = $request->Act_id;
+        // $events->Temp_id = $request->Temp_id;
+        // $events->Event_start = $request->Event_start;
+        // $events->Event_end = $request->Event_end;
+        // $events->Color = $request->Color;
 
-        // dd($events);
-        $events->save();
+        // // dd($events);
+        // $events->save();
 
 
        
         // return redirect('admincalen');
     }
+
+    public function addevent(Request $request)
+    {
+
+
+        $events = new Events();
+        $events->Act_id = $request->Act_id;
+        $events->Temp_id = $request->Temp_id;
+        $events->Event_start = $request->Event_start;
+        $events->Event_end = $request->Event_end;
+        $events->Color = $request->Color;
+
+        // dd($events);
+        $events->save();
+
+    }
+
     public function addact(Request $request)
     {
         $activity = new Activity();
@@ -84,7 +104,11 @@ class AdcalenController extends Controller
      */
     public function edit($id)
     {
-        //
+        session_start();
+        
+        $events = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->where('Event_no' , '=', $id)->get();
+        /*dd($temple);*/
+        return view('editactivity',['events' => $events]);
     }
 
     /**
@@ -96,12 +120,12 @@ class AdcalenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
-        $edit = Events::find($id);
-        $edit->Act_id = $request->nameact;
-        $edit->Color = $request->color;
-
-        $edit->save();
+        $events = Events::findOrFail($id);
+        $events->Event_start = $request->Event_start;
+        $events->Event_end = $request->Event_end;
+        $events->Color = $request->Color;
+        
+        $events->save();
 
     }
 

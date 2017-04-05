@@ -36,9 +36,9 @@ Route::post('/adindex', 'AdindexController@login');
 
 
 Route::resource('/adcalen','AdcalenController');
-Route::post('/adcalen', 'AdcalenController@store');
-Route::post('/adcalen', 'AdcalenController@addact');
-Route::post('/adcalen', 'AdcalenController@update');
+Route::post('/adcalen/event', 'AdcalenController@addevent');
+Route::post('/adcalen/act', 'AdcalenController@addact');
+
 
 
 Route::resource('/calendar','CalendarController');
@@ -48,7 +48,9 @@ Route::post('/search', 'SearchController@search');
 
 Route::resource('/adtemppro', 'AdmintempleprofileController');
 
+
 Route::resource('/adminpro', 'AdminprofileController');
+
 
 
 Route::get('/home', 'HomeController@index');
@@ -72,3 +74,5 @@ Route::post('/addstaff', 'AddstaffController@store');
 
 
 Route::resource('/addtemple','AddtempleController');
+
+Route::resource('/managestaff','ManagestaffController');

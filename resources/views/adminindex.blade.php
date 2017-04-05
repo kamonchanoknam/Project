@@ -88,42 +88,43 @@ if (!isset($_SESSION['count'])) {
                     </table>
                 </div>
                 <!--End Page Header -->
-
+                <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">รูปภาพวัด</h1>
                     
                     <div class="container">
                   {{--   @foreach($picture as $pic) --}}
                       <table class="table table-inverse">
-                        {{-- <thead>
-                          <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                          </tr>
-                        </thead> --}}
+                        
                         
                         <tbody>
                         
                           <tr style="font-weight: bolder;">
                             <td >รหัสรูปภาพ</td>
-                            <td>ชื่อรูปภาพ</td>
                             <td>แก้ไขรายละเอียด</td>
+                          
                           </tr> 
                           @foreach($templeuser as $pic)     
                           <tr>
-                            <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}"></td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
+                            <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}" style="width: 200px;height: 150px;"></td>
+                            <td>
+
+                           {!! Form::open(array('url' => 'adindexshow/' . $pic->Pic_id, 'method'
+                            => 'delete')) !!}
+                            <button type="submit" class="btn btn-default" style="width: 50px; height: 50px;">
+                              <span class="fa fa-trash-o"></span> 
+                            </button>
+                            {!! Form::close() !!}
+                           
+                            </td>
+                            
 
                           </tr>
                           @endforeach
                         </tbody>
                       </table>
-                    {{--   @endforeach --}}
-                      {{-- <div class="pagination">
-                        {{ $pic->links() }}
-                      </div --}}
+                    
+                    </div>
                     </div>
                   </div>
          

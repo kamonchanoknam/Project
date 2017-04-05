@@ -38,7 +38,7 @@ if (!isset($_SESSION['count'])) {
                 <div class="col-lg-12">
                     <h1 class="page-header">ข้อมูลวัด</h1>
                     
-                    <table class="table table-inverse">
+                    <table class="table table-inverse" style="background-color: #BEBEBE " >
                       
                       <tbody>
                         <tr>
@@ -48,66 +48,49 @@ if (!isset($_SESSION['count'])) {
                           <th>วันเวลาสิ้นสุดกิจกรรม</th>
                           <th>สี</th>
 
-                        </tr>
-                        <tr>
-                          <th>ที่อยู่วัด</th>
-                          <td></td>
-                        </tr>
-                                                               
-                  
-                          <td>
-                            {{-- <a href="{{ url('/adindexshow/'.$templeuser[0]->Temp_id.'/edit')}}"> --}}
-                            <button type="button" class="btn btn-default">
-                              <span class="fa fa-edit "></span> แก้ไขข้อมูล
-                            </button>{{-- </a> --}}
+                          <th colspan="2">แก้ไขรายละเอียด</th>
 
-                            {{-- <a href="#"><span class=" glyphicon glyphicon-edit"></span></a> --}}
-                          
-                          </td> 
-                          <td>
-                          {{-- <a href="{{ url('/adindexshow/'.$templeuser[0]->Temp_id.'/addpicture')}}"> --}}
-                            <button type="button" class="btn btn-default">
-                              <span class="fa fa-cloud-upload "></span> เพิ่มรูปภาพ
-                            </button>{{-- </a> --}}
-                            
-                            {{-- <a href="#"><span class=" glyphicon glyphicon-edit"></span></a> --}}
-                          
-                          </td> 
                         </tr>
+
+                        @foreach($events as $events1)
+                        <tr {{-- style="color: blue" --}} >
+                        
+                          <td>{{ $events1->Act_name }}</td>
+                          <td>{{ $events1->Temp_name }}</td>
+                          <td>{{ $events1->Event_start }}</td>
+                          <td>{{ $events1->Event_end }}</td>
+                          <td>{{ $events1->Color }}</td>
+                          <td>
+                          <a href="{{ url('/adcalen/'.$events1->Event_no.'/edit')}}">
+                            <button type="button" class="btn btn-default">
+                              <span class="fa fa-edit "></span> 
+                            </button></a>
+                            <button type="button" class="btn btn-default">
+                              <span class="fa fa-trash-o"></span> 
+                            </button>
+                          </td>
+
+                        </tr>
+
+                        @endforeach
+                                   
+                       </tr>
                       </tbody>
                     </table>
-                </div>
+
+                </div>&nbsp;&nbsp;
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus-square "></span> เพิ่มกิจกรรม</button>
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#neweventModal"><span class=" fa fa-plus-square-o "></span> เพิ่มกิจกรรมใหม่</button>
                 <!--End Page Header -->
 
                 
             </div>
         </div>
   
-    <div id="page-wrapper">
-
-            <div class="row">
-                <!-- Page Header -->
-                <div class="col-lg-12">
-                    <h1 class="page-header">ข้อมูลปฏิทินกิจกรรม</h1>
-                </div>
-            </div>
-            <div class="row" >
-            <div class="col-lg-10 text-center">
-                <div id="calendar" class="col-centered" style="background-color: #BEBEBE">
-                </div>
-            </div>
-        </div><br><br>
-
-        {{-- <input type="submit" name="add" value="เพิ่มกิจกรรม"> --}}
+   
+    
         
-       {{--  <button >เพิ่มกิจกรรม</button>
-        <button >แก้ไขกิจกรรม</button> --}}
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">เพิ่มกิจกรรม</button>
-         <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#neweventModal">เพิ่มกิจกรรมใหม่</button>
-
-         {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">แก้ไขกิจกรรม</button> --}}
-
-          <!-- Modal -->
+          <!-- Modal add event -->
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
             
@@ -125,7 +108,7 @@ if (!isset($_SESSION['count'])) {
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div> --}}
         {{-- <form class="form-horizontal" method="POST" action="addEvent.php"> --}}
-        {!! Form::open(['url'=>'adcalen','class'=>'form-horizontal']) !!}
+        {!! Form::open(['url'=>'adcalen/event','class'=>'form-horizontal']) !!}
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรม</h4>
@@ -136,8 +119,8 @@ if (!isset($_SESSION['count'])) {
           <label for="nameevent" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
             
-           {{--  <input type="select" name="title" class="form-control" id="title" placeholder="Title"> --}}
-            <select name="nameevent" class="form-control">
+        
+            <select name="Act_id" class="form-control">
                 @foreach($activity as $act)
                 <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
                 @endforeach
@@ -149,7 +132,7 @@ if (!isset($_SESSION['count'])) {
           <label for="placeevent" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
           <div class="col-sm-10">
             {{-- <input type="select" name="place" class="form-control" id="place" placeholder="Title"> --}}
-            <select name="placeevent" class="form-control">
+            <select name="Temp_id" class="form-control">
                 @foreach($temple as $temp)
                 <option value="{{$temp->Temp_id}}">{{$temp->Temp_name}}</option>
                 @endforeach
@@ -159,7 +142,7 @@ if (!isset($_SESSION['count'])) {
           <div class="form-group">
           <label for="color" class="col-sm-2 control-label">สีเน้นกิจกรรม</label>
           <div class="col-sm-10">
-            <select name="color" class="form-control" id="color">
+            <select name="Color" class="form-control" id="color">
               <option value="">Choose</option>
               <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
               <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
@@ -176,13 +159,13 @@ if (!isset($_SESSION['count'])) {
 
           <label for="start" class="col-sm-2 control-label">วันที่เริ่มกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="datetime-local" name="start" class="form-control" id="start" >
+            <input type="datetime-local" name="Event_start" class="form-control" id="start" >
           </div>
           </div>
           <div class="form-group">
           <label for="end" class="col-sm-2 control-label">วันที่สิ้นสุดกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="datetime-local" name="end" class="form-control" id="end" >
+            <input type="datetime-local" name="Event_end" class="form-control" id="end" >
           </div>
           </div>
         
@@ -217,7 +200,7 @@ if (!isset($_SESSION['count'])) {
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div> --}}
         {{-- <form class="form-horizontal" method="POST" action="addEvent.php"> --}}
-        {!! Form::open(['url'=>'adcalen','class'=>'form-horizontal']) !!}
+        {!! Form::open(['url'=>'adcalen/act','class'=>'form-horizontal']) !!}
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">เพิ่มกิจกรรมใหม่</h4>
@@ -257,68 +240,7 @@ if (!isset($_SESSION['count'])) {
               
             </div>
           </div>
-      </div>
-
-
-    <!-- Modal Edit Event-->
-    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      
-      {!! Form::open(['url'=>'adcalen/.','class'=>'form-horizontal']) !!}
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">แก้ไขกิจกรรม</h4>
-        </div>
-        <div class="modal-body">
-        
-          <div class="form-group">
-          <label for="title" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
-          <div class="col-sm-10">
-            {{-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> --}}
-            <select name="nameact" class="form-control">
-                @foreach($activity as $act)
-                <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
-                @endforeach
-            </select>
-          </div>
-          </div>
-          <div class="form-group">
-          <label for="color" class="col-sm-2 control-label">สี</label>
-          <div class="col-sm-10">
-            <select name="color" class="form-control" id="color">
-              <option value="">Choose</option>
-              <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
-              <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
-              <option style="color:#008000;" value="#008000">&#9724; Green</option>             
-              <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
-              <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
-              <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
-              <option style="color:#000;" value="#000">&#9724; Black</option>
-              
-            </select>
-          </div>
-          </div>
-            <div class="form-group"> 
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-              <label class="text-danger"><input type="checkbox"  name="delete"> Delete event</label>
-              </div>
-            </div>
-          </div>
-          
-          <input type="hidden" name="id" class="form-control" id="id">
-        
-        
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      {!! Form::close() !!}
-      </div>
-      </div>
-    </div>
+    
         
   
 

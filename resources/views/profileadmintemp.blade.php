@@ -1,47 +1,8 @@
-<?php
 
-if (!isset($_SESSION['count'])) {
-  $_SESSION['count'] = 0;
-} else {
-  $_SESSION['count']++;
-}
-?>
-@extends('layouts.admintemp')
+@foreach($user1 as $user)
 
-@section('head')
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{!!   Form::model($user, array('url' => 'adtemppro/'.$user->Staff_id, 'method' => 'put','class'=>'form-horizontal')); !!}
 
-
-
-<style>
-    .othertop{margin-top:10px;}
-    </style>
-</style>
-@endsection
-
-@section('content')<br>
-     <div id="page-wrapper">
-
-            <div class="row">
-                <!-- Page Header -->
-                <div class="col-lg-12">
-                    <div class="container">
-<div class="row">
-<div class="col-md-8 "><br><br>
-
-
-
-<!-- Form Name -->
-<legend align="center" style="font-size: 24px">ข้อมูลส่วนตัว</legend>
-
-
-
-{!!   Form::model($user[0], array('url' => 'adtemppro/'.$user[0]->Staff_id, 'method' => 'put','class'=>'form-horizontal')); !!}
-
-    
     {{-- Staff id --}}
     <div class="form-group">
       {!! Form::label('id','หมายเลขบัตรประชาชน :',array('class'=>'col-md-4 control-label')); !!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -184,33 +145,4 @@ if (!isset($_SESSION['count'])) {
                           
                           
     {!! Form::close(); !!}
-
-
-
-
-</div>
-
-
-</div>
-</div>
-   </div>
-   
-
-                    
-                </div>
-                <!--End Page Header -->
-            </div>
-        </div>
-
-           
-@endsection
-
-@section('footer')
-
-@endsection
-
-
-
-
-
-
+@endforeach

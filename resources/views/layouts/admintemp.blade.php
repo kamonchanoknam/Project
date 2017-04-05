@@ -32,6 +32,8 @@
    </head>
    
 <body>
+
+
     <!--  wrapper -->
     <div id="wrapper">
         <!-- navbar top -->
@@ -51,6 +53,7 @@
             </div>
             <!-- end navbar-header -->
             <!-- navbar-top-links -->
+         
             <ul class="nav navbar-top-links navbar-right">
                 <!-- main dropdown -->
                 {{-- <li class="dropdown">
@@ -71,8 +74,11 @@
                         <i class="fa fa-user fa-3x"></i>
                     </a>
                     <!-- dropdown user-->
+                    
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{ url('/adtemppro')}}"><i class="fa fa-user fa-fw"></i>ข้อมูลส่วนตัว</a>
+
+
+                        <li><a href="{{ url('/adtemppro') }}"><i class="fa fa-user fa-fw"></i>ข้อมูลส่วนตัว</a>
                         </li>
                         <!--<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
                         </li>-->

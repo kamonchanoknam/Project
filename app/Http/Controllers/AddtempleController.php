@@ -17,9 +17,10 @@ class AddtempleController extends Controller
      */
     public function index()
     {
-        $temple = Temple::all();
-         $staff = Staff::all();
-        return view('addtemple',['addtemple'=>$temple,'staff'=>$staff]);
+        // $temple = Temple::all();
+        $staff = DB::table('staff')->select('*')->Where('Type','=','1')->get();
+        // dd($staff);
+        return view('addtemple',['staff'=>$staff]);
 
       
     }
@@ -42,7 +43,7 @@ class AddtempleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $temple = new Temple();
         $temple->Temp_name = $request->tempname;
         $temple->Temp_address = $request->address;

@@ -125,6 +125,14 @@
                         <?php } ?>
                         <a href="{{ url('/addstaff') }}"><i class="fa fa-user fa-fw">&nbsp;</i>เพิ่มผู้ดูแลวัด</a>
                     </li>
+
+                    <?php if(Request::is('managestaff')){ ?> 
+                        <li class='selected'> 
+                        <?php }else{ ?> 
+                        <li> 
+                        <?php } ?>
+                        <a href="{{ url('/managestaff') }}"><i class="fa fa-cogs fa-fw">&nbsp;</i>จัดการสิทธิ์ผู้ดูแลวัด</a>
+                    </li>
                 </ul>
                 <!-- end side-menu -->
             </div>

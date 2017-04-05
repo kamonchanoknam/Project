@@ -156,7 +156,7 @@ button{
        </div>
        <input id="password" name="password" type="password" class="form-control input-md" placeholder="Password"> 
       </div>
-      <input class="button" type="submit" name="ok" value="ตกลง" style="float: right; margin-top: -2%">
+      <input class="button" type="submit" name="ok" value="เข้าสู่ระบบ" style="float: right; margin-top: -2%">
       
       </form>
 

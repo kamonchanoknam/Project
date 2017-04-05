@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Temple;
-
-class ShowxmlController extends Controller
+use DB;
+class ManagestaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,10 @@ class ShowxmlController extends Controller
      */
     public function index()
     {
-        $temple = Temple::all();
+          $staff = DB::table('staff')->select('*')->where('status','like','1')->where('type','like','1')->get();
+          // dd($staff);
 
-        return view('mpas_xml',['temp'=>$temple]);
+        return view('managestaff',['staff'=>$staff]);
     }
 
     /**
