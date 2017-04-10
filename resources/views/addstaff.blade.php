@@ -10,7 +10,7 @@
 	 		
 	 		{!! Form::open(['url'=>'addstaff','class'=>'pure-form']) !!}
 			    <fieldset class="pure-group">
-			       <input type="text" class="pure-input-1-2" placeholder="หมายเลขประชาชน" name="id" maxlength="13">
+			       <input type="number" class="pure-input-1-2" placeholder="หมายเลขประชาชน" name="id" maxlength="13">
 			       <input type="text" class="pure-input-1-2" placeholder="ชื่อ" name="name">
 			       <input type="text" class="pure-input-1-2" placeholder="นามสกุล" name="surname">
 			    </fieldset>

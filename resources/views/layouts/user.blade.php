@@ -4,7 +4,7 @@
     <title>Website Temple in Chiang Mai City</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
     <meta charset="UTF-8">
     <script src="{{ asset('js/jQuery1.js') }}"></script>
     <script src="{{ asset('js/myScript.js') }}"></script>
@@ -15,6 +15,11 @@
 
     @yield('head')
 <style>
+body {
+    background: currentColor ;
+    min-width: 960px;
+    margin: 0;
+}
 .button {
   padding: 3px 13px;
   font-size: 14px;
@@ -22,7 +27,7 @@
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #556B2F;
+  background-color: #99CCCC;
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px #999;
@@ -138,6 +143,7 @@ button{
   background-color: red;
   color: white;
 }
+
 </style>
 </head>
 <body>
@@ -169,7 +175,7 @@ button{
         <div class="area">
             <div id="logo">
                 <!--<a href="index.html"><img src="" alt="LOGO" height="86" width="170" /></a>-->
-                <h1 style="color: #996600">วัดในอำเภอเมืองเชียงใหม่</h1>
+                <h1 style="color: #FFA500">วัดในอำเภอเมืองเชียงใหม่</h1>
             </div>
             <ul id="navigation">
                 <li  {{ Request::is('index') ? ' class=selected ' : null }}>

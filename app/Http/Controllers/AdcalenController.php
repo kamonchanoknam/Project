@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\Activity;
+
 use DB;
 class AdcalenController extends Controller
 {
@@ -18,8 +19,7 @@ class AdcalenController extends Controller
          // $events = Events::all();
          $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
          // dd($events1);
-
-
+         
 
          $temple1 = DB::table('temple')->select('*')->get();
          $act1 = DB::table('activity')->select('*')->get();
@@ -137,6 +137,7 @@ class AdcalenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $events = Events::find($id);
+        $events->delete();
     }
 }

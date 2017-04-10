@@ -62,7 +62,7 @@
 @endsection
 
 @section('content')
-	<h1 align="center">ค้นหาวัด</h1>
+	<h1 align="center" style="color: white">ค้นหาวัด</h1>
 			<hr width="50%"><br>
 			
 
@@ -85,7 +85,7 @@
 			
 			@if(!empty($temple1))
 			
-				<table align="center">
+				<table align="center" style="background-color: #D3D3D3">
 			  <tr>
 			    <th>ชื่อวัด</th>
 			    <td>{{$temple1[0]->Temp_name}}</td>

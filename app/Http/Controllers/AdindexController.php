@@ -65,6 +65,9 @@ class AdindexController extends Controller
 
             }
         }
+        echo "<script type='text/javascript'>alert('เพิ่มรูปภาพเรียบร้อย');</script>";
+        return redirect()->action('AdindexController@index');
+
     }
 
     /**
@@ -113,6 +116,10 @@ class AdindexController extends Controller
         $temple->Temp_longitude = $request->Temp_longitude;
 
         $temple->save();
+
+        echo "<script type='text/javascript'>alert('แก้ไขเรียบร้อย');</script>";
+        return redirect()->action('AdindexController@index');
+
     }
 
     /**
@@ -147,16 +154,23 @@ class AdindexController extends Controller
         {
 
             if($checkLogin[0]->Type==1){
-            session_start();
-            $_SESSION['Username'] = $username;
+                if($checkLogin[0]->Status==1){
+                    session_start();
+                    $_SESSION['Username'] = $username;
             
             
-           return redirect()->action('AdindexController@index');
+                    return redirect()->action('AdindexController@index');
+                    }
+                else{
+
+                    return redirect()->action('SiteController@index');
+
+                }
             }
             else{
 
                 session_start();
-            $_SESSION['Username'] = $username;
+                $_SESSION['Username'] = $username;
             
             
            return redirect()->action('AddtempleController@index');
@@ -164,7 +178,8 @@ class AdindexController extends Controller
         }
         else
         {
-            echo "Login Failed";
+            echo "<script type='text/javascript'>alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');</script>";
+            // return redirect()->action('SiteController@index');
         }
     }
 }

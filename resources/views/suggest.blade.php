@@ -45,7 +45,7 @@
       }
       #directions-panel {
         margin-top: 10px;
-        background-color: #FFEE77;
+        background-color: #8FBC8F;
         padding: 10px;
       }
       #infowindow-content .title {
@@ -61,11 +61,11 @@
         margin-top:50px;
       }
       .textbox {
-    background: #CCFFFF;
+    background: #E6E6FA;
     color: #000000;
     width: 200px;
     padding: 6px 15px 6px 35px;
-    /*border-radius: 20px;*/
+    border-radius: 8px;
     box-shadow: 0 1px 0 #ccc inset;
     transition: 500ms all ease;
     outline: 0;
@@ -78,7 +78,7 @@
 
 
 @section('content')
-	<h1 align="center" >แนะนำเส้นทางและวางแผนการเดินทาง</h1>
+	<h1 align="center" style="color: white" >แนะนำเส้นทาง</h1>
   
 	<hr width="50%"><br>
   <div id="map"></div>
@@ -101,10 +101,10 @@
     
     </datalist><br>
 
-    <b>กรอบเวลา:</b><br>
-    <input type="time" name="starttime"> ถึง <input type="time" name="endtime"><br><br>
+    <br>
 
-    <input type="submit" id="submit" value="ดูเส้นทาง"><br>
+    <input type="submit" id="submit" value="ดูวัดระหว่างเส้นทาง" style="padding: 2px 15px 6px 5px;
+    border-radius: 8px; background: #556B2F; color: #E0FFFF "><br>
 
     <b>เลือกวัดที่ต้องการ:</b> <br>
     <i>(Ctrl+Click สำหรับเลือกได้หลายวัด)</i> <br>
@@ -113,6 +113,10 @@
       
 
     </select>
+
+    <input type="submit" id="way" value="ดูเส้นทาง" style="padding: 2px 15px 6px 5px;
+    border-radius: 8px; background-color: #556B2F;color:#E0FFFF " ><br>
+
     <script type="text/javascript">
     function create_select(){
       var i=0;
@@ -166,6 +170,8 @@
       var map;
       var markerss = [];
       var count_click;
+      var directionsService;
+      var directionsDisplay;
 
       
 
@@ -211,8 +217,8 @@
       function initMap() {
          hide();
 
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: {lat: 18.78775, lng: 98.99312}
@@ -220,15 +226,43 @@
 
         directionsDisplay.setMap(map);
 
-        document.getElementById('submit').addEventListener('click', function() {
-  
+        document.getElementById('way').addEventListener('click',function() {
           count_click+=1;
           if(count_click!=0){
             set_name_temple=[];
 
           }
+          newPoint();
+          
+        });
 
-          show();
+        document.getElementById('submit').addEventListener('click', function() {
+  
+        count_click+=1;
+
+          newPoint();
+          
+
+        }   );
+
+        
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('start'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                latitude = place.geometry.location.lat();
+                longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                // alert(mesg);
+            });
+        });
+      }
+
+      function newPoint(){
+         show();
           clearMarkers();
           radLatLong= calculateAndDisplayRoute(directionsService, directionsDisplay);
           // window.alert(radLatLong);
@@ -302,27 +336,7 @@
             });
             create_select();
           });
-          
-
-        }   );
-
-        
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('start'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-                var place = places.getPlace();
-                var address = place.formatted_address;
-                latitude = place.geometry.location.lat();
-                longitude = place.geometry.location.lng();
-                var mesg = "Address: " + address;
-                mesg += "\nLatitude: " + latitude;
-                mesg += "\nLongitude: " + longitude;
-                // alert(mesg);
-            });
-        });
       }
-
-      
       function createRadius(lat,long,radius) {
         
           covered={
@@ -424,7 +438,7 @@
            
             }
           } else {
-            window.alert('Directions request failed due to ' + status);
+            window.alert('ไม่พบเส้นทางกรุณาเลือกจุดเริ่มต้นและจุดปลายทาง');
           }
         });
         var text=latitude1+","+longtitude1+","+radius;

@@ -87,6 +87,8 @@ if (!isset($_SESSION['count'])) {
                       </tbody>
                     </table>
                 </div>
+
+               
                 <!--End Page Header -->
                 <div class="row">
                 <div class="col-lg-12">
@@ -109,12 +111,11 @@ if (!isset($_SESSION['count'])) {
                             <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}" style="width: 200px;height: 150px;"></td>
                             <td>
 
-                           {!! Form::open(array('url' => 'adindexshow/' . $pic->Pic_id, 'method'
-                            => 'delete')) !!}
-                            <button type="submit" class="btn btn-default" style="width: 50px; height: 50px;">
+                          
+                            <button href="{{$pic->Pic_id}}" type="submit" class="btn btn-default" data-toggle="modal" data-target="#delpic" style="width: 50px; height: 50px;">
                               <span class="fa fa-trash-o"></span> 
                             </button>
-                            {!! Form::close() !!}
+                        
                            
                             </td>
                             
@@ -127,6 +128,37 @@ if (!isset($_SESSION['count'])) {
                     </div>
                     </div>
                   </div>
+
+                 <!-- Modal deletr pic -->
+          <div class="modal fade" id="delpic" role="dialog">
+            <div class="modal-dialog">
+            
+             
+              <div class="modal-content">
+          
+        <div class="modal-body">
+        
+         
+          <b>ต้องการลบรูปหรือไม่</b>
+          
+          
+        
+        
+        </div>
+        <div class="modal-footer">
+        
+        {!! Form::open(array('url' => 'adindexshow/' . $pic->Pic_id, 'method'
+        => 'delete')) !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">ใช่</button>
+        {!! Form::close() !!}
+        <button type="submit" class="btn btn-primary">ไม่</button>
+        </div>
+       
+      
+      </div>
+              
+            </div>
+          </div>
          
             </div>
         </div>

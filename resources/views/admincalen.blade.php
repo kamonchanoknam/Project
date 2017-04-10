@@ -36,7 +36,7 @@ if (!isset($_SESSION['count'])) {
             <div class="row">
                 <!-- Page Header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header">ข้อมูลวัด</h1>
+                    <h1 class="page-header">ข้อมูลปฏิทินกิจกรรมงานบุญ</h1>
                     
                     <table class="table table-inverse" style="background-color: #BEBEBE " >
                       
@@ -62,12 +62,16 @@ if (!isset($_SESSION['count'])) {
                           <td>{{ $events1->Color }}</td>
                           <td>
                           <a href="{{ url('/adcalen/'.$events1->Event_no.'/edit')}}">
-                            <button type="button" class="btn btn-default">
+                            <button type="button" class="btn btn-info">
                               <span class="fa fa-edit "></span> 
-                            </button></a>
-                            <button type="button" class="btn btn-default">
+                            </button></a></td>
+                            <td>
+                          {!! Form::open(array('url' => 'adcalen/' . $events1->Event_no, 'method'
+                            => 'delete')) !!}
+                            <button type="submit" class="btn btn-danger">
                               <span class="fa fa-trash-o"></span> 
                             </button>
+                            {!! Form::close() !!}
                           </td>
 
                         </tr>
@@ -171,11 +175,11 @@ if (!isset($_SESSION['count'])) {
         
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+        <button type="submit" class="btn btn-primary">บันทึก</button>
         </div>
        
-        {{!! Form::close() !!}}
+        {!! Form::close() !!}
       </div>
               
             </div>
@@ -231,8 +235,8 @@ if (!isset($_SESSION['count'])) {
         
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+        <button type="submit" class="btn btn-primary">บันทัก</button>
         </div>
        
         {!! Form::close() !!}

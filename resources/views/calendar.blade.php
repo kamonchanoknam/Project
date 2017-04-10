@@ -16,7 +16,7 @@
 
 @section('content')
 	
-    <h1 align="center">ปฏิทินกิจกรรมงานบุญ</h1>
+    <h1 align="center" style="color: white">ปฏิทินกิจกรรมงานบุญ</h1>
     <hr width="50%"><br>
     <div class="container" >
         <div class="row">

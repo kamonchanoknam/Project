@@ -53,7 +53,7 @@ if (!isset($_SESSION['count'])) {
 
                           {!! Form::label('color','สี :') !!}
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          {!! Form::text('Color',null,array('class' => 'pure-input-1-2'));!!}<br><br>
+                          {!! Form::text('Color',null,array('class' => 'pure-input-1-2' ,'readonly'=>'true'));!!}<br><br>
                          
 
 
