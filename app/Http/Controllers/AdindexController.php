@@ -179,7 +179,7 @@ class AdindexController extends Controller
         else
         {
             echo "<script type='text/javascript'>alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');</script>";
-            // return redirect()->action('SiteController@index');
+            return redirect()->action('SiteController@index');
         }
     }
 }

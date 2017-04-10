@@ -38,15 +38,18 @@
                           <td>{{ $staff->Status }}</td>
                           <td>{{ $staff->Type }}</td>
                           <td>
-                          <a href="{{ url('/adcalen/'.$staff->Staff_id.'/edit')}}">
+
+                          @if(($staff->Status)==0)
+                          <a href="{{ url('/managestaff/'.$staff->Staff_id.'/edit')}}">
                             <button type="button" class="btn btn-danger">
                               <span class="fa fa-lock "></span> 
                             </button></a>
-                          <a href="{{ url('/adcalen/'.$staff->Staff_id.'/edit')}}">
+                          @else
+                          <a href="{{ url('/managestaff/'.$staff->Staff_id.'/edit')}}">
                             <button type="button" class="btn btn-info">
                               <span class="fa fa-unlock "></span> 
                             </button></a>
-                            
+                          @endif
                           </td>
 
                         </tr>

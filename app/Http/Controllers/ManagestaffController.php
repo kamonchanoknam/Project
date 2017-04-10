@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Staff;
+
 class ManagestaffController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class ManagestaffController extends Controller
      */
     public function index()
     {
-          $staff = DB::table('staff')->select('*')->where('status','like','1')->where('type','like','1')->get();
+          $staff = DB::table('staff')->get();
           // dd($staff);
 
         return view('managestaff',['staff'=>$staff]);
@@ -59,7 +61,19 @@ class ManagestaffController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $staff = Staff::findOrFail($id);
+        // $staff = 'Status' = '0';
+
+        if(($staff->Status)==0){
+            $staff->Status='1';
+        }else{
+            $staff->Status='0';
+        }
+
+        $staff->save();
+
+        return redirect()->action('ManagestaffController@index');
     }
 
     /**

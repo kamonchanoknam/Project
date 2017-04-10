@@ -74,87 +74,8 @@
         width: 270px;
     }
   </style>
-@endsection
 
-
-@section('content')
-	<h1 align="center" style="color: white" >แนะนำเส้นทาง</h1>
-  
-	<hr width="50%"><br>
-  <div id="map"></div>
-	<div id="floating-panel">
-    
-    <div id="right-panel">
-    <div>
-    <b>จุดเริ่มต้น:</b>
-    <input class="textbox" id="start" style="width: 250px" placeholder="Enter a location" />
-
-    
-    
-<b>จุดสิ้นสุด:</b><br>
-    <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;">
-            <datalist id='myCompanies'>
-      
-        @foreach($tempmaps as $temple)
-          <option value="{{ $temple->Temp_latitude }},{{ $temple->Temp_longitude }}" >"{{ $temple->Temp_name}}"</option>
-        @endforeach
-    
-    </datalist><br>
-
-    <br>
-
-    <input type="submit" id="submit" value="ดูวัดระหว่างเส้นทาง" style="padding: 2px 15px 6px 5px;
-    border-radius: 8px; background: #556B2F; color: #E0FFFF "><br>
-
-    <b>เลือกวัดที่ต้องการ:</b> <br>
-    <i>(Ctrl+Click สำหรับเลือกได้หลายวัด)</i> <br>
-    <p id="demo"></p>
-    <select multiple id="waypoints">
-      
-
-    </select>
-
-    <input type="submit" id="way" value="ดูเส้นทาง" style="padding: 2px 15px 6px 5px;
-    border-radius: 8px; background-color: #556B2F;color:#E0FFFF " ><br>
-
-    <script type="text/javascript">
-    function create_select(){
-      var i=0;
-
-    var y ;
-
-
-    for (i = 0 ;i<set_name_temple.length;i++){
-          y+="<option value='"+set_name_temple[i]+"'>"+set_name_temple[i]+"</option>";
-
-    }
-
-    document.getElementById('waypoints').innerHTML=y;
-    }
-
-    </script>
-
-
-  
-
-    <br><br>
-    
-  
-    
-      
-    </div>
-    
-    
-    </div>
-    <div id="right-panel">
-    <div id="directions-panel"></div>
-    </div>
-  </div><br>
-@endsection
-
-@section('footer')
-	
-    <script>
+   <script>
      
       var count=0;
       var set_name_temple=[];
@@ -435,7 +356,8 @@
               summaryPanel.innerHTML += route.legs[i].duration.text + '<br>';
               summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
 
-           
+            computeTotalDistance(response);
+
             }
           } else {
             window.alert('ไม่พบเส้นทางกรุณาเลือกจุดเริ่มต้นและจุดปลายทาง');
@@ -444,7 +366,106 @@
         var text=latitude1+","+longtitude1+","+radius;
         return text;
       }
+
+      function computeTotalDistance(result) {
+        var totalDist = 0;
+        var totalTime = 0;
+        var myroute = result.routes[0];
+
+        for (i = 0; i < myroute.legs.length; i++) {
+          totalDist += myroute.legs[i].distance.value;
+          totalTime += myroute.legs[i].duration.value;
+        }
+          totalDist = totalDist / 1000.
+          document.getElementById("total").innerHTML = "ระยะทางรวมทั้งหมด: " + totalDist + " km<br>เวลารวมทั้งหมด: " + (totalTime / 60).toFixed(2) + " minutes";
+      }
+
     </script>
+@endsection
+
+
+@section('content')
+	<h1 align="center" style="color: white" >แนะนำเส้นทาง</h1>
+  
+	<hr width="50%"><br>
+  <div id="map"></div>
+	<div id="floating-panel">
+    
+    <div id="right-panel">
+    <div>
+    <b>จุดเริ่มต้น:</b>
+    <input class="textbox" id="start" style="width: 250px" placeholder="Enter a location" />
+
+    
+    
+<b>จุดสิ้นสุด:</b><br>
+    <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;">
+            <datalist id='myCompanies'>
+      
+        @foreach($tempmaps as $temple)
+          <option value="{{ $temple->Temp_latitude }},{{ $temple->Temp_longitude }}" >"{{ $temple->Temp_name}}"</option>
+        @endforeach
+    
+    </datalist><br>
+
+    <br>
+
+    <input type="submit" id="submit" value="ดูวัดระหว่างเส้นทาง" style="padding: 2px 15px 6px 5px;
+    border-radius: 8px; background: #556B2F; color: #E0FFFF "><br>
+
+    <b style="color: white">เลือกวัดที่ต้องการ:</b> <br>
+    <i style="color: white">(Ctrl+Click สำหรับเลือกได้หลายวัด)</i> <br>
+    <p id="demo"></p>
+    <select multiple id="waypoints">
+      
+
+    </select>
+
+    <input type="submit" id="way" value="ดูเส้นทาง" style="padding: 2px 15px 6px 5px;
+    border-radius: 8px; background-color: #556B2F;color:#E0FFFF " ><br>
+
+    <div id="total" style="color: white; font-weight: bold;"></div>
+
+    <script type="text/javascript">
+    function create_select(){
+      var i=0;
+
+    var y ;
+
+
+    for (i = 0 ;i<set_name_temple.length;i++){
+          y+="<option value='"+set_name_temple[i]+"'>"+set_name_temple[i]+"</option>";
+
+    }
+
+    document.getElementById('waypoints').innerHTML=y;
+    }
+
+    </script>
+
+
+  
+
+    <br><br>
+    
+  
+    
+      
+    </div>
+    
+    
+    </div>
+    <div id="right-panel">
+    <div id="directions-panel"></div>
+    </div>
+  </div><br>
+
+
+@endsection
+
+@section('footer')
+	
+   
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1wd_ZjcGOeUA3Z8PTTArFp2oSiCGd3KQ&sensor=false&libraries=places&callback=initMap">
