@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Temple;
 use App\Staff;
+use App\Pictures;
 use DB;
+use File;
 
 
 class AddtempleController extends Controller
@@ -52,8 +54,31 @@ class AddtempleController extends Controller
         $temple->Temp_latitude  = $request->latitude;
         $temple->Temp_longitude  = $request->longitude;
         $temple->Staff_id  = $request->id;
+
+
         
         $temple->save();
+
+        
+
+        if($request->hasFile('files')){
+
+            $files = $request->file('files');
+            // dd($files);
+            $pictemp = Temple::orderBy('Temp_id','desc')->first();
+            foreach ($files as $file) {
+
+                $pic =  new Pictures();
+                $pic->Temp_id = $pictemp->Temp_id;
+            
+                $filename = "Pictuers_".str_random(10). '.'.$file->getClientOriginalExtension();
+                $file->move(public_path() .'/images/pictemple', $filename);
+
+                $pic->Pic_name=$filename;
+                $pic->save();
+
+            }
+        }
     }
 
     /**

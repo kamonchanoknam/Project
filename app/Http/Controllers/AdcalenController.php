@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\Activity;
+use App\Temple;
 
 use DB;
 class AdcalenController extends Controller
@@ -16,12 +17,24 @@ class AdcalenController extends Controller
      */
     public function index()
     {
+        session_start();
+
+        $temple = DB::table('staff')->where('staff.Username','like', $_SESSION['Username'])->get();
+        //dd($temple[0]->Staff_id);
+        
+
          // $events = Events::all();
-         $events1 = DB::table('events')->select('*')->join('temple','temple.Temp_id','=','events.Temp_id')->join('activity','activity.Act_id','=','events.Act_id')->get();
-         // dd($events1);
+         $events1 = DB::table('events')
+         ->select('*')
+         ->join('temple','temple.Temp_id','=','events.Temp_id')
+         ->join('activity','activity.Act_id','=','events.Act_id')
+         ->where('temple.Staff_id','like',$temple[0]->Staff_id)
+         ->get();
+
+
          
 
-         $temple1 = DB::table('temple')->select('*')->get();
+         $temple1 = DB::table('temple')->select('*')->where('temple.Staff_id','like',$temple[0]->Staff_id)->get();
          $act1 = DB::table('activity')->select('*')->get();
 
          return view('admincalen',['events'=>$events1,'temple'=>$temple1,'activity'=>$act1]);

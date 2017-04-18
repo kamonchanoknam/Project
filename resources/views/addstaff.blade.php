@@ -10,22 +10,22 @@
 	 		
 	 		{!! Form::open(['url'=>'addstaff','class'=>'pure-form']) !!}
 			    <fieldset class="pure-group">
-			       <input type="number" class="pure-input-1-2" placeholder="หมายเลขประชาชน" name="id" maxlength="13">
-			       <input type="text" class="pure-input-1-2" placeholder="ชื่อ" name="name">
+			       <input type="number" class="pure-input-1-2" placeholder="หมายเลขประชาชน" name="id" maxlength="13" required>
+			       <input type="text" class="pure-input-1-2" placeholder="ชื่อ" name="name" required>
 			       <input type="text" class="pure-input-1-2" placeholder="นามสกุล" name="surname">
 			    </fieldset>
 
 			    <fieldset class="pure-group">
-			       <input type="text" class="pure-input-1-2" placeholder="ชื่อผู้ใช้" name="username">
-			       <input type="text" class="pure-input-1-2" placeholder="รหัสผ่าน" name="password">
-			       <input type="text" class="pure-input-1-2" placeholder="อีเมล์" name="email">
-			       <input type="text" class="pure-input-1-2" placeholder="ที่อยู่" name="address">
-			       <input type="text" class="pure-input-1-2" placeholder="โทรศัพท์" name="phone">
+			       <input type="text" class="pure-input-1-2" placeholder="ชื่อผู้ใช้" name="username" required>
+			       <input type="text" class="pure-input-1-2" placeholder="รหัสผ่าน" name="password" required>
+			       <input type="text" class="pure-input-1-2" placeholder="อีเมล์" name="email" required>
+			       <input type="text" class="pure-input-1-2" placeholder="ที่อยู่" name="address" required>
+			       <input type="text" class="pure-input-1-2" placeholder="โทรศัพท์" name="phone" required>
 			    </fieldset>
 
 			    <fieldset class="pure-group">
-			       <input type="text" class="pure-input-1-2" placeholder="สถานะผู้ดูแล" name="status">
-			       <input type="text" class="pure-input-1-2" placeholder="ประเภทผู้ดูแล" name="type">
+			       <input type="text" class="pure-input-1-2" placeholder="สถานะผู้ดูแล" name="status" required>
+			       <input type="text" class="pure-input-1-2" placeholder="ประเภทผู้ดูแล" name="type" required>
 			    
 			    </fieldset>
 

@@ -15,10 +15,10 @@ class ManagestaffController extends Controller
      */
     public function index()
     {
-          $staff = DB::table('staff')->get();
+          $staff = DB::table('staff')->paginate(10);
           // dd($staff);
 
-        return view('managestaff',['staff'=>$staff]);
+        return view('managestaff',['staff1'=>$staff]);
     }
 
     /**

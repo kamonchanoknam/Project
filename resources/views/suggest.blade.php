@@ -160,7 +160,7 @@
         document.getElementById('submit').addEventListener('click', function() {
   
         count_click+=1;
-
+        set_name_temple=[];
           newPoint();
           
 
@@ -183,8 +183,10 @@
       }
 
       function newPoint(){
-         show();
+          show();
+          
           clearMarkers();
+          
           radLatLong= calculateAndDisplayRoute(directionsService, directionsDisplay);
           // window.alert(radLatLong);
           var customLabel = {
@@ -281,17 +283,37 @@
 
         count=count+1;
    }
-      function dist(lat1, long1, lat2, long2) {
-          var pi = Math.PI;
-          var dist = 0;
+      // function dist(lat1, long1, lat2, long2) {
+      //     var pi = Math.PI;
+      //     var dist = 0;
 
-          var theta = long1 - long2;
-          dist = Math.sin(lat1 * pi / 180) * Math.sin(lat2 * pi / 180) + Math.cos(lat1 * pi / 180) * Math.cos(lat2 * pi / 180) * Math.cos(theta * pi / 180);
-          dist = Math.acos(dist);
-          dist = (dist * 180) / pi;
-          dist = dist * 60 * 1.1515 * 1.609344; //Km.
+      //     var theta = long1 - long2;
+      //     dist = Math.sin(lat1 * pi / 180) * Math.sin(lat2 * pi / 180) + Math.cos(lat1 * pi / 180) * Math.cos(lat2 * pi / 180) * Math.cos(theta * pi / 180);
+      //     dist = Math.acos(dist);
+      //     dist = (dist * 180) / pi;
+      //     dist = dist * 60 * 1.1515 * 1.609344; //Km.
 
-          return dist;
+      //     return dist;
+      // }
+
+      function dist(lat1, lon1, lat2, lon2) {
+        var pi = Math.PI
+        var dist = 0;
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1); 
+        var a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+        ; 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var dist = R * c; // Distance in km
+ 
+        return dist;
+      }
+      function deg2rad(deg) {
+      return deg * (Math.PI/180)
       }
       
 
@@ -393,12 +415,12 @@
     
     <div id="right-panel">
     <div>
-    <b>จุดเริ่มต้น:</b>
+    <b style="color: white">จุดเริ่มต้น:</b>
     <input class="textbox" id="start" style="width: 250px" placeholder="Enter a location" />
 
     
     
-<b>จุดสิ้นสุด:</b><br>
+<b style="color: white">จุดสิ้นสุด:</b><br>
     <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;">
             <datalist id='myCompanies'>
       
@@ -430,8 +452,9 @@
     function create_select(){
       var i=0;
 
-    var y ;
-
+    var y 
+    ;
+    // document.getElementById('waypoints').innerHTML=y;
 
     for (i = 0 ;i<set_name_temple.length;i++){
           y+="<option value='"+set_name_temple[i]+"'>"+set_name_temple[i]+"</option>";

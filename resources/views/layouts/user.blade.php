@@ -156,11 +156,11 @@ button{
       <div class="input-group-addon" ">
         <i class="fa fa-user"></i>  
        </div>
-       <input id="username" name="username" type="text" class="form-control input-md" placeholder="Username">
+       <input id="username" name="username" type="text" class="form-control input-md" placeholder="ชื่อผู้ใช้">
        <div class="input-group-addon">
         <i class="fa fa-lock"></i> 
        </div>
-       <input id="password" name="password" type="password" class="form-control input-md" placeholder="Password"> 
+       <input id="password" name="password" type="password" class="form-control input-md" placeholder="รหัสผ่าน"> 
       </div>
       <input class="button" type="submit" name="ok" value="เข้าสู่ระบบ" style="float: right; margin-top: -2%">
       
@@ -200,12 +200,9 @@ button{
     <div id="footer">
         <span class="divider"></span>
         <div class="area">
-            {{-- <div id="connect">
-                <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a> <a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="mail"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a>
-            </div> --}}
-            <p style="color: white">
-                ติดต่อที่ 053-448441 หรือ 053-448442 
-                kamonchanok_T@hotmail.com
+            
+            <p style="color: white;font-size: 20px;" >
+                ติดต่อขอเป็นผู้ดูแลวัด <a href="https://docs.google.com/forms/d/e/1FAIpQLSed-8-y2M3DUtmm0wNFMG78qMpFdrTxK19ccFQolIb7wxkp7w/viewform" style="color: brown"> คลิกที่นี่</a>
             </p>
         </div>
     </div>

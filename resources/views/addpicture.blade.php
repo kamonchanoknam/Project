@@ -36,7 +36,7 @@ if (!isset($_SESSION['count'])) {
                       {!! Form::open(array('url'=>'adindexshow','files'=> 'true')) !!}
                           <input type="hidden" name="id" value="{{$templeuser[0]->Temp_id}}">
       
-                          <input type="file" name="files[]" id="file_input" multiple="multiple">
+                          <input type="file" name="files[]" id="file_input" multiple="multiple" required>
                           <br>
                           <input type="submit" value="อัพโหลดรูปภาพ" name="submit">
                       {!! Form::close() !!}

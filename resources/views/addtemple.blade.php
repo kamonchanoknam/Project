@@ -8,20 +8,20 @@
 	 	<div class="col-lg-12">
 	 		<h1 class="page-header">กรอกข้อมูลเพื่อเพิ่มวัด</h1>
 
-	 		{!! Form::open(['url'=>'/addtemple','class'=>'pure-form','method' => 'post']) !!}
+	 		{!! Form::open(['url'=>'/addtemple','class'=>'pure-form','method' => 'post','files'=> true]) !!}
 			    <fieldset class="pure-group">
-			       <input type="text" class="pure-input-1-2" placeholder="ชื่อวัด" name="tempname">
-			       <input type="text" class="pure-input-1-2" placeholder="ที่อยู่วัด" name="address">
+			       <input type="text" class="pure-input-1-2" placeholder="ชื่อวัด" name="tempname" required>
+			       <input type="text" class="pure-input-1-2" placeholder="ที่อยู่วัด" name="address" required>
 			    </fieldset>
 
 			    <fieldset class="pure-group">
-			        <textarea class="pure-input-1-2" placeholder="ลักษณะเด่น" name="features" maxlength="300"></textarea>
-			        <textarea class="pure-input-1-2" placeholder="ประวัติวัด" name="history"></textarea>
+			        <textarea class="pure-input-1-2" placeholder="ลักษณะเด่น" name="features" maxlength="300" required></textarea>
+			        <textarea class="pure-input-1-2" placeholder="ประวัติวัด" name="history" required></textarea>
 			    </fieldset>
 
 			    <fieldset class="pure-group">
-			        <input type="text" class="pure-input-1-2" placeholder="ละติจูด" name="latitude">
-			        <input type="text" class="pure-input-1-2" placeholder="ลองติจูด" name="longitude">
+			        <input type="text" class="pure-input-1-2" placeholder="ละติจูด" name="latitude" required>
+			        <input type="text" class="pure-input-1-2" placeholder="ลองติจูด" name="longitude" required>
 			       
 			    </fieldset>
 			    หมายเลขประชาชนผู้ดูแล :
@@ -32,7 +32,13 @@
 		                @endforeach
 		            </select>
 			    </fieldset>
-
+			    เพิ่มรูปภาพ :
+				<fieldset>
+			    	{{-- <input type="hidden" name="id" value="{{$templeuser[0]->Temp_id}}"> --}}
+      
+                  <input type="file" name="files[]" id="file_input" multiple="multiple" >
+                          <br>
+                </fieldset>
 			    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">เพิ่มข้อมูล</button>
 			
 			{!! Form::close() !!}

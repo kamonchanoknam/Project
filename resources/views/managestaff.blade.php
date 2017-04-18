@@ -26,7 +26,7 @@
 
                         </tr>
 
-                        @foreach($staff as $staff)
+                        @foreach($staff1 as $staff)
                         <tr {{-- style="color: blue" --}} >
                         
                           <td>{{ $staff->Staff_id }}</td>
@@ -53,15 +53,21 @@
                           </td>
 
                         </tr>
+                        
+                          <div class="pagination">
+                            
+                          </div>
+                        
 
                         @endforeach
                                    
                        </tr>
                       </tbody>
+                      
                     </table>
 
 			{!! Form::close() !!}
-
+{{ $staff1->links() }}
 	 	</div>
 	 	</div>
 	 </div>

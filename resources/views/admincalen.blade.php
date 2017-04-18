@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['count'])) {
   $_SESSION['count'] = 0;
 } else {
@@ -136,17 +136,19 @@ if (!isset($_SESSION['count'])) {
           <label for="placeevent" class="col-sm-2 control-label">สถานที่จัดกิจกรรม</label>
           <div class="col-sm-10">
             {{-- <input type="select" name="place" class="form-control" id="place" placeholder="Title"> --}}
+
             <select name="Temp_id" class="form-control">
                 @foreach($temple as $temp)
                 <option value="{{$temp->Temp_id}}">{{$temp->Temp_name}}</option>
                 @endforeach
             </select>
+            
           </div>
           </div>
           <div class="form-group">
           <label for="color" class="col-sm-2 control-label">สีเน้นกิจกรรม</label>
           <div class="col-sm-10">
-            <select name="Color" class="form-control" id="color">
+            <select name="Color" class="form-control" id="color" required>
               <option value="">Choose</option>
               <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
               <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
@@ -163,13 +165,13 @@ if (!isset($_SESSION['count'])) {
 
           <label for="start" class="col-sm-2 control-label">วันที่เริ่มกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="datetime-local" name="Event_start" class="form-control" id="start" >
+            <input type="datetime-local" name="Event_start" class="form-control" id="start" required>
           </div>
           </div>
           <div class="form-group">
           <label for="end" class="col-sm-2 control-label">วันที่สิ้นสุดกิจกรรม</label>
           <div class="col-sm-10">
-            <input type="datetime-local" name="Event_end" class="form-control" id="end" >
+            <input type="datetime-local" name="Event_end" class="form-control" id="end" required>
           </div>
           </div>
         
@@ -215,7 +217,7 @@ if (!isset($_SESSION['count'])) {
           <label for="nameevent" class="col-sm-2 control-label">ชื่อกิจกรรม</label>
           <div class="col-sm-10">
             
-            <input type="text" name="actname" class="form-control" placeholder="ชื่อกิจกรรม">
+            <input type="text" name="actname" class="form-control" placeholder="ชื่อกิจกรรม" required>
             {{-- <select name="nameevent" class="form-control">
                 @foreach($activity as $act)
                 <option value="{{$act->Act_id}}">{{$act->Act_name}}</option>
@@ -227,7 +229,7 @@ if (!isset($_SESSION['count'])) {
           <div class="form-group">
           <label for="placeevent" class="col-sm-2 control-label">รายละเอียดยกิจกรรม</label>
           <div class="col-sm-10">
-            <textarea name="detail" class="form-control" placeholder="รายละเอียดยกิจกรรม"></textarea>
+            <textarea name="detail" class="form-control" placeholder="รายละเอียดยกิจกรรม" required></textarea>
             
           </div>
           </div>
