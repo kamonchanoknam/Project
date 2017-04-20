@@ -8,6 +8,12 @@
 	 	<div class="col-lg-12">
 	 		<h1 class="page-header">กรอกข้อมูลเพื่อเพิ่มวัด</h1>
 
+	 		@if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
+
 	 		{!! Form::open(['url'=>'/addtemple','class'=>'pure-form','method' => 'post','files'=> true]) !!}
 			    <fieldset class="pure-group">
 			       <input type="text" class="pure-input-1-2" placeholder="ชื่อวัด" name="tempname" required>

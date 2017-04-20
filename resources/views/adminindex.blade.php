@@ -37,6 +37,11 @@ if (!isset($_SESSION['count'])) {
                 <div class="col-lg-12">
                     <h1 class="page-header">ข้อมูลวัด</h1>
                     
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
                     <table class="table table-inverse">
                       
                       <tbody>
@@ -112,10 +117,14 @@ if (!isset($_SESSION['count'])) {
                             <td>
 
                           
-                            <button href="{{$pic->Pic_id}}" type="submit" class="btn btn-default" data-toggle="modal" data-target="#delpic" style="width: 50px; height: 50px;">
+                           {!! Form::open(['url'=>'adindexshow/'.$pic->Pic_id,'method'=>'DELETE','class'=>'form-horizontal',
+                                'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบรูปภาพหรือไม่ ?")'])!!}
+
+                            <button  type="submit" class="btn btn-default"  style="width: 50px; height: 50px;">
                               <span class="fa fa-trash-o"></span> 
                             </button>
-                        
+                            
+                            {!! Form::close() !!}
                            
                             </td>
                             
@@ -129,7 +138,7 @@ if (!isset($_SESSION['count'])) {
                     </div>
                   </div>
 
-                 <!-- Modal deletr pic -->
+        {{--          <!-- Modal deletr pic -->
           <div class="modal fade" id="delpic" role="dialog">
             <div class="modal-dialog">
             
@@ -158,7 +167,7 @@ if (!isset($_SESSION['count'])) {
       </div>
               
             </div>
-          </div>
+          </div> --}}
          
             </div>
         </div>

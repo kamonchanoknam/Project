@@ -30,8 +30,11 @@ if (!isset($_SESSION['count'])) {
                 <!-- Page Header -->
                 <div class="col-lg-12">
                     <h1 class="page-header">เพิ่มรูปภาพ</h1>
-
-                
+                       @if(Session::has('flash_message'))
+                          <div class="alert alert-success">
+                            {{ Session::get('flash_message') }}
+                          </div>
+                      @endif
                       
                       {!! Form::open(array('url'=>'adindexshow','files'=> 'true')) !!}
                           <input type="hidden" name="id" value="{{$templeuser[0]->Temp_id}}">

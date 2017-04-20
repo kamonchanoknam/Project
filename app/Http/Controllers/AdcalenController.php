@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Events;
 use App\Activity;
 use App\Temple;
+use Session;
 
 use DB;
 class AdcalenController extends Controller
@@ -86,6 +87,8 @@ class AdcalenController extends Controller
 
         // dd($events);
         $events->save();
+         Session::flash('flash_message', 'ข้อมูลถูกเพิ่มแล้ว!');
+        return redirect()->back();
 
     }
 
@@ -96,6 +99,8 @@ class AdcalenController extends Controller
         $activity->Act_detail = $request->detail;
 
         $activity->save();
+         Session::flash('flash_message', 'ข้อมูลถูกเพิ่มแล้ว!');
+        return redirect()->back();
     }
 
     /**
@@ -140,6 +145,9 @@ class AdcalenController extends Controller
         
         $events->save();
 
+        Session::flash('flash_message', 'ข้อมูลถูกแก้ไขเแล้ว!');
+        return redirect()->back();
+
     }
 
     /**
@@ -152,5 +160,8 @@ class AdcalenController extends Controller
     {
         $events = Events::find($id);
         $events->delete();
+
+        Session::flash('flash_message', 'ข้อมูลกิจกรรมถูกลบแล้ว!');
+        return redirect()->back();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Staff;
 use DB;
+use Session;
 
 class AddstaffController extends Controller
 {
@@ -52,6 +53,9 @@ class AddstaffController extends Controller
 
         // dd($staff);
         $staff->save();
+
+        Session::flash('flash_message', 'ข้อมูลถูกเพิ่มแล้ว!');
+        return redirect()->back();
     }
 
     /**

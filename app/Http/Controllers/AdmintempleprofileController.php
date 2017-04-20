@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Staff;
+use Session;
 
 class AdmintempleprofileController extends Controller
 {
@@ -99,6 +100,9 @@ class AdmintempleprofileController extends Controller
 
         
         $staff->save();
+
+        Session::flash('flash_message', 'ข้อมูลถูกแก้ไขเแล้ว!');
+        return redirect()->back();
     }
 
     /**

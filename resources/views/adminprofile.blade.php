@@ -33,6 +33,12 @@ if (!isset($_SESSION['count'])) {
 
 <legend align="center" style="font-size: 24px">ข้อมูลส่วนตัว</legend>
 
+@if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
+
 {!!   Form::model($user[0], array('url' => 'adminpro/'.$user[0]->Staff_id, 'method' => 'put','class'=>'form-horizontal')); !!}
 
     {{-- Staff id --}}

@@ -8,6 +8,7 @@ use App\Staff;
 use App\Pictures;
 use DB;
 use File;
+use Session;
 
 
 class AddtempleController extends Controller
@@ -79,6 +80,8 @@ class AddtempleController extends Controller
 
             }
         }
+        Session::flash('flash_message', 'ข้อมูลถูกเพิ่มแล้ว!');
+        return redirect()->back();
     }
 
     /**

@@ -37,6 +37,11 @@ if (!isset($_SESSION['count'])) {
                 <!-- Page Header -->
                 <div class="col-lg-12">
                     <h1 class="page-header">แก้ไขข้อมูลวัด</h1>
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                    @endif
                      {!!   Form::model($temple[0], array('url' => 'adindexshow/'.$temple[0]->Temp_id, 'method' => 'put','class'=>'pure-form')); !!}
                           {!! Form::label('tempname','ชื่อวัด :'); !!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           {!! Form::text('Temp_name',null,array('class' => 'pure-input-1-2')); !!}<br><br>

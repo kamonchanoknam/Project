@@ -37,6 +37,12 @@ if (!isset($_SESSION['count'])) {
                 <!-- Page Header -->
                 <div class="col-lg-12">
                     <h1 class="page-header">แก้ไขปฏิทินกิจกรรม</h1>
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                    @endif
+                    
                      {!!   Form::model($events[0], array('url' => 'adcalen/'.$events[0]->Event_no, 'method' => 'put','class'=>'pure-form')); !!}
                           {!! Form::label('actname','ชื่อกิจกรรม :'); !!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           {!! Form::text('Act_name',null,array('class' => 'pure-input-1-2','readonly'=>'true')); !!}<br><br>

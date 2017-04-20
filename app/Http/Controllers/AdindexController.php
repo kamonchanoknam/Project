@@ -7,7 +7,7 @@ use App\Temple;
 use App\Pictures;
 use DB;
 use File;
-
+use Session;
 
 class AdindexController extends Controller
 {
@@ -65,8 +65,10 @@ class AdindexController extends Controller
 
             }
         }
-        echo "<script type='text/javascript'>alert('เพิ่มรูปภาพเรียบร้อย');</script>";
-        return redirect()->action('AdindexController@index');
+        
+         Session::flash('flash_message', 'รูปภาพถูกเพิ่มแล้ว!');
+        return redirect()->back();
+
 
     }
 
@@ -117,8 +119,8 @@ class AdindexController extends Controller
 
         $temple->save();
 
-        echo "<script type='text/javascript'>alert('แก้ไขเรียบร้อย');</script>";
-        return redirect()->action('AdindexController@index');
+        Session::flash('flash_message', 'ข้อมูลถูกแก้ไขเแล้ว!');
+        return redirect()->back();
 
     }
 
@@ -136,6 +138,9 @@ class AdindexController extends Controller
             File::delete(public_path() . '\\images\\' .$pic->Pic_name);
         }
         $pic->delete();
+
+        Session::flash('flash_message', 'รูปภาพถูกลบแล้ว!');
+        return redirect()->back();
 
 
 

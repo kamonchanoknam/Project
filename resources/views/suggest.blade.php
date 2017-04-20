@@ -421,7 +421,7 @@
     
     
 <b style="color: white">จุดสิ้นสุด:</b><br>
-    <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;">
+    <input class="textbox" type="text" list="myCompanies" name="tempName" id="end" style="width: 250px;" >
             <datalist id='myCompanies'>
       
         @foreach($tempmaps as $temple)

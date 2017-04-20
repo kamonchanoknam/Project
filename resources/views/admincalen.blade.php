@@ -37,6 +37,11 @@ if (!isset($_SESSION['count'])) {
                 <!-- Page Header -->
                 <div class="col-lg-12">
                     <h1 class="page-header">ข้อมูลปฏิทินกิจกรรมงานบุญ</h1>
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
                     
                     <table class="table table-inverse" style="background-color: #BEBEBE " >
                       
@@ -66,8 +71,14 @@ if (!isset($_SESSION['count'])) {
                               <span class="fa fa-edit "></span> 
                             </button></a></td>
                             <td>
-                          {!! Form::open(array('url' => 'adcalen/' . $events1->Event_no, 'method'
-                            => 'delete')) !!}
+                          
+
+                          {{-- {!! Form::open(array('url' => 'adcalen/' . $events1->Event_no, 'method'
+                            => 'delete')) !!} --}}
+
+                          {!! Form::open(['url'=>'adcalen/'.$events1->Event_no,'method'=>'DELETE','class'=>'form-horizontal',
+                            'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบรูปภาพหรือไม่ ?")'])!!}
+                            
                             <button type="submit" class="btn btn-danger">
                               <span class="fa fa-trash-o"></span> 
                             </button>

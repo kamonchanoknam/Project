@@ -7,6 +7,12 @@
 	 	<div class="row">
 	 	<div class="col-lg-12">
 	 		<h1 class="page-header">กรอกข้อมูลเพื่อเพิ่มผู้ดูแลวัด</h1>
+
+	 		@if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
 	 		
 	 		{!! Form::open(['url'=>'addstaff','class'=>'pure-form']) !!}
 			    <fieldset class="pure-group">
