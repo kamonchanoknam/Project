@@ -20,13 +20,22 @@ class AdindexController extends Controller
     {   
         session_start();
         // $temple = DB::table('temple')->select('*')->where('staff.Username','like', $_SESSION['Username'])->get();
+        $gettemple = DB::table('temple')->select('*')->where(['Temp_id' => $_SESSION['temple_id']])->first();
+        $getpic = DB::table('picture')->select('*')->where(['Temp_id' => $_SESSION['temple_id']])->first();
 
-        $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+        if($getpic != NULL)
+        {
+            $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+        }
+        else
+        {
+            $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->where('staff.Username','like', $_SESSION['Username'])->get();
 
-            
-        // dd($temple);
+        }
         
-        return view('adminindex',['templeuser'=>$temple]);
+        //dd($temple);
+        
+        return view('adminindex',['templeuser'=>$temple, 'getpic' => $getpic]);
     }
 
     /**
@@ -38,9 +47,25 @@ class AdindexController extends Controller
     {
   
         session_start();
-        $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+        // $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
         //dd($temple);
-        return view('addpicture',['templeuser'=>$temple]);
+        $gettemple = DB::table('temple')->select('*')->where(['Temp_id' => $_SESSION['temple_id']])->first();
+        $getpic = DB::table('picture')->select('*')->where(['Temp_id' => $_SESSION['temple_id']])->first();
+
+        if($getpic != NULL)
+        {
+            $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+        }
+        else
+        {
+            $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+
+        }
+        
+        //dd($temple);
+        
+        return view('addpicture',['templeuser'=>$temple, 'getpic' => $getpic]);
+        // return view('addpicture',['templeuser'=>$temple]);
     }
 
     /**
@@ -157,16 +182,20 @@ class AdindexController extends Controller
         $password = $req->input('password');
 
         $checkLogin = DB::table('staff')->where(['Username'=>$username,'Password'=>$password])->get();
-
         
+
         if(count($checkLogin) >0)
         {
 
             if($checkLogin[0]->Type==1){
                 if($checkLogin[0]->Status==1){
                     session_start();
+
+                    $staff_id = $checkLogin[0]->Staff_id;
+                    $gettemple = DB::table('temple')->where(['Staff_id' => $staff_id])->first();
+                    
+                    $_SESSION['temple_id'] = $gettemple->Temp_id;
                     $_SESSION['Username'] = $username;
-            
             
                     return redirect()->action('AdindexController@index');
                     }

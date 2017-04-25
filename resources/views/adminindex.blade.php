@@ -111,26 +111,32 @@ if (!isset($_SESSION['count'])) {
                             <td>แก้ไขรายละเอียด</td>
                           
                           </tr> 
-                          @foreach($templeuser as $pic)     
-                          <tr>
-                            <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}" style="width: 200px;height: 150px;"></td>
-                            <td>
 
+                          @if($getpic != NULL)
+                          @foreach($templeuser as $pic) 
                           
-                           {!! Form::open(['url'=>'adindexshow/'.$pic->Pic_id,'method'=>'DELETE','class'=>'form-horizontal',
-                                'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบรูปภาพหรือไม่ ?")'])!!}
+                            <tr>
+                              <td><img src="{{ 'images/pictemple/'.$pic->Pic_name }}" style="width: 200px;height: 150px;"></td>
+                              <td>
 
-                            <button  type="submit" class="btn btn-default"  style="width: 50px; height: 50px;">
-                              <span class="fa fa-trash-o"></span> 
-                            </button>
                             
-                            {!! Form::close() !!}
-                           
-                            </td>
-                            
+                             {!! Form::open(['url'=>'adindexshow/'.$pic->Pic_id,'method'=>'DELETE','class'=>'form-horizontal',
+                                  'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบรูปภาพหรือไม่ ?")'])!!}
 
-                          </tr>
+                              <button  type="submit" class="btn btn-default"  style="width: 50px; height: 50px;">
+                                <span class="fa fa-trash-o"></span> 
+                              </button>
+                              
+                              {!! Form::close() !!}
+                             
+                              </td>
+                              
+
+                            </tr>
+                             
+                          
                           @endforeach
+                          @endif
                         </tbody>
                       </table>
                     

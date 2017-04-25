@@ -15,11 +15,17 @@ class SiteController extends Controller
      */
     public function index()
     {
+        // if (isset($_SESSION['Username'])) {
+        //     return redirect()->action('AdindexController@index');
+        // }
+        
         $name = Temple::orderBy('Temp_name','ASC')->paginate(5);
         
         $pic = DB::table('temple')->select('*')->join('picture','picture.Temp_id','=','temple.Temp_id')->get();
         $pic = $pic->unique('Temp_id');
        // dd($pic);
+
+
         return view('index',['temple'=>$name , 'pictemp'=>$pic]);
     }
 
