@@ -19,7 +19,11 @@ class AdindexController extends Controller
     public function index()
     {   
         session_start();
+        // $temple = DB::table('temple')->select('*')->where('staff.Username','like', $_SESSION['Username'])->get();
+
         $temple = DB::table('temple')->select('*')->join('staff','staff.Staff_id','=','temple.Staff_id')->join('picture','picture.Temp_id','=','temple.Temp_id')->where('staff.Username','like', $_SESSION['Username'])->get();
+
+            
         // dd($temple);
         
         return view('adminindex',['templeuser'=>$temple]);

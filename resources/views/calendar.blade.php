@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.users')
 
 @section('head')
     <link href="{{ url('css/fullcalendar.css') }}" rel='stylesheet' />
@@ -12,24 +12,6 @@
 		margin: 0 auto;
 	}
     </style>
-@endsection
-
-@section('content')
-	
-    <h1 align="center" style="color: white">ปฏิทินกิจกรรมงานบุญ</h1>
-    <hr width="50%"><br>
-    <div class="container" >
-        <div class="row">
-            <div class="col-lg-5 text-center">
-                <div id="calendar" class="col-centered" style="background-color: #708090">
-                </div>
-            </div>
-        </div>
-    </div><br>
-@endsection
-
-
-@section('footer')
 
     <script src="{{ asset('js/jquery.js') }}"></script>
 
@@ -113,6 +95,23 @@
 
 </script>
 @endsection
+
+@section('content')
+	
+    <h1 align="center" style="color: white">ปฏิทินกิจกรรมงานบุญ</h1>
+    <hr width="50%"><br>
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-5 text-center">
+                <div id="calendar" class="col-centered" style="background-color: #708090">
+                </div>
+            </div>
+        </div>
+    </div><br>
+@endsection
+
+
+
 
 	
 

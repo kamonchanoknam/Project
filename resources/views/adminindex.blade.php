@@ -137,37 +137,6 @@ if (!isset($_SESSION['count'])) {
                     </div>
                     </div>
                   </div>
-
-        {{--          <!-- Modal deletr pic -->
-          <div class="modal fade" id="delpic" role="dialog">
-            <div class="modal-dialog">
-            
-             
-              <div class="modal-content">
-          
-        <div class="modal-body">
-        
-         
-          <b>ต้องการลบรูปหรือไม่</b>
-          
-          
-        
-        
-        </div>
-        <div class="modal-footer">
-        
-        {!! Form::open(array('url' => 'adindexshow/' . $pic->Pic_id, 'method'
-        => 'delete')) !!}
-        <button type="button" class="btn btn-default" data-dismiss="modal">ใช่</button>
-        {!! Form::close() !!}
-        <button type="submit" class="btn btn-primary">ไม่</button>
-        </div>
-       
-      
-      </div>
-              
-            </div>
-          </div> --}}
          
             </div>
         </div>
@@ -182,9 +151,3 @@ if (!isset($_SESSION['count'])) {
 @section('footer')
 
 @endsection
-
-
-
-
-
-

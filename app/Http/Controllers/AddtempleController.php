@@ -47,6 +47,25 @@ class AddtempleController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+
+        
+        // dd($users);
+
+            $staff = DB::table('temple')->select('*')->Where('Staff_id','like',$request->id)->get();
+
+            foreach ($staff as $row) {
+                if ($row->Staff_id) {
+                    echo "duplicate";
+                    Session::flash('flash_message', 'มีผู้ดูแลวัดคนนี้อยู่แล้ว!');
+                    return redirect()->back();
+                }
+               
+            }
+
+
+     
+        
+
         $temple = new Temple();
         $temple->Temp_name = $request->tempname;
         $temple->Temp_address = $request->address;

@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.users')
 
 @section('head')
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -260,6 +260,7 @@
             create_select();
           });
       }
+      
       function createRadius(lat,long,radius) {
         
           covered={
@@ -283,19 +284,7 @@
 
         count=count+1;
    }
-      // function dist(lat1, long1, lat2, long2) {
-      //     var pi = Math.PI;
-      //     var dist = 0;
-
-      //     var theta = long1 - long2;
-      //     dist = Math.sin(lat1 * pi / 180) * Math.sin(lat2 * pi / 180) + Math.cos(lat1 * pi / 180) * Math.cos(lat2 * pi / 180) * Math.cos(theta * pi / 180);
-      //     dist = Math.acos(dist);
-      //     dist = (dist * 180) / pi;
-      //     dist = dist * 60 * 1.1515 * 1.609344; //Km.
-
-      //     return dist;
-      // }
-
+      
       function dist(lat1, lon1, lat2, lon2) {
         var pi = Math.PI
         var dist = 0;
@@ -403,6 +392,11 @@
       }
 
     </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1wd_ZjcGOeUA3Z8PTTArFp2oSiCGd3KQ&sensor=false&libraries=places&callback=initMap">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 @endsection
 
 
@@ -486,13 +480,3 @@
 
 @endsection
 
-@section('footer')
-	
-   
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1wd_ZjcGOeUA3Z8PTTArFp2oSiCGd3KQ&sensor=false&libraries=places&callback=initMap">
-    </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-@endsection
