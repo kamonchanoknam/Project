@@ -286,7 +286,7 @@
    }
       
       function dist(lat1, lon1, lat2, lon2) {
-        var pi = Math.PI
+        
         var dist = 0;
         var R = 6371; // Radius of the earth in km
         var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -360,7 +360,7 @@
               // var duration = parseFloat(route.legs[i].duration.text)+30;
 
 
-              summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+              summaryPanel.innerHTML += '<b>เส้นทางที่ : ' + routeSegment +
                   '</b><br>';
               summaryPanel.innerHTML += route.legs[i].start_address + ' <b>to<b> ';
               summaryPanel.innerHTML += route.legs[i].end_address + '<br>';

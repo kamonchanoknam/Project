@@ -77,7 +77,7 @@ if (!isset($_SESSION['count'])) {
                             => 'delete')) !!} --}}
 
                           {!! Form::open(['url'=>'adcalen/'.$events1->Event_no,'method'=>'DELETE','class'=>'form-horizontal',
-                            'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบรูปภาพหรือไม่ ?")'])!!}
+                            'role'=>'form','onsubmit' => 'return confirm("คุณต้องการลบกิจกรรมหรือไม่ ?")'])!!}
                             
                             <button type="submit" class="btn btn-danger">
                               <span class="fa fa-trash-o"></span> 

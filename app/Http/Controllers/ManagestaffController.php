@@ -15,7 +15,7 @@ class ManagestaffController extends Controller
      */
     public function index()
     {
-          $staff = DB::table('staff')->paginate(10);
+          $staff = DB::table('staff')->where('Type','=','1')->paginate(10);
           // dd($staff);
 
         return view('managestaff',['staff1'=>$staff]);
